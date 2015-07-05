@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 router.get('/userlist', function(req, res) {
   var db = req.db;
   var collection = db.get('scripts');
-  collection.findOne({},{},function(e,docs){
+  collection.find({},{ limit : 10},function(e,docs){
     //console.log(e)
     console.log(docs)
     res.render('userlist', {

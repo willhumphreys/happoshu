@@ -2,5 +2,10 @@ extends layout
 
 block content
 
-    p #{results.account}
-    p #{results._id}
+
+
+    p #{results.length}
+
+    ul
+        each val in results
+            li #{val.account}  #{val.direction}
