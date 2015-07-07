@@ -46,7 +46,7 @@ router.get('/', function(req, res, next) {
         } // an error occurred
         else     {
             console.log(data);
-            res.send(data);
+            res.json(data);
         }           // successful response
     });
 
