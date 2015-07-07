@@ -36,12 +36,21 @@ router.get('/', function(req, res, next) {
         Delimiter: '/'
 
     };
+
+
+    var dataToReturn;
     s3.listObjects(params, function(err, data) {
-        if (err) console.log(err, err.stack); // an error occurred
-        else     console.log(data);           // successful response
+        if (err) {
+            console.log(err, err.stack);
+            res.send('broken');
+        } // an error occurred
+        else     {
+            console.log(data);
+            res.send(data);
+        }           // successful response
     });
 
-    res.send('respond with a resource');
+
 });
 
 module.exports = router;
