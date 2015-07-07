@@ -14,6 +14,7 @@ var users = require('./routes/users');
 var bucket = require('./routes/bucket');
 var helloworld = require('./routes/helloworld');
 var scenarios = require('./routes/scenarios');
+var scenariofiles = require('./routes/scenariofiles');
 
 var app = express();
 
@@ -41,6 +42,7 @@ app.use('/users', users);
 app.use('/bucket', bucket);
 app.use('/helloworld', helloworld);
 app.use('/scenarios', scenarios);
+app.use('/scenariofiles/*', scenariofiles);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

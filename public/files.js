@@ -1,30 +1,35 @@
 var myApp = angular.module('myApp', []);
 
 myApp.service('dataService', function ($http) {
-    this.getLocalFiles = function () {
+    this.getSimulationGroupNames = function () {
         return $http({
             method: 'GET',
             url: 'http://localhost:3000/scenarios'
         });
     };
 
-    this.getRemoteFiles = function () {
+    this.getSimulationGroupFiles = function () {
         return $http({
             method: 'GET',
-            url: 'http://localhost:8080/remotefiles'
+            url: 'http://localhost:8080/simulationGroupFiles'
         });
     };
 });
 
 myApp.controller('FileController', function ($scope, dataService) {
-    $scope.localfiles = null;
-    dataService.getLocalFiles().then(function (dataResponse) {
-        $scope.localfiles = dataResponse;
+
+    $scope.logout = function (value) {
+        console.log('Hello I was called ' + value);
+    };
+
+    $scope.simulationGroupNames = null;
+    dataService.getSimulationGroupNames().then(function (dataResponse) {
+        $scope.simulationGroupNames = dataResponse;
     });
 
-    $scope.remotefiles = null;
-    dataService.getRemoteFiles().then(function (dataResponse) {
-        $scope.remotefiles = dataResponse;
+    $scope.simulationGroupFiles = null;
+    dataService.getSimulationGroupFiles().then(function (dataResponse) {
+        $scope.simulationGroupFiles = dataResponse;
     });
 });
 

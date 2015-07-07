@@ -13,9 +13,13 @@
 
 <body>
 <div ng-controller="FileController">
+    <p>Bucket: {{ simulationGroupNames.data.Name }}</p>
     <ul>
-        <li ng-repeat="data in localfiles.data">
-            {{ data }}
+        <li ng-repeat="data in simulationGroupNames.data.CommonPrefixes">
+
+            <a href="" ng-click="logout(data.Prefix)">{{ data.Prefix }}</a>
+
+
         </li>
     </ul>
 </div>
