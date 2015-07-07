@@ -17,7 +17,20 @@
     <ul>
         <li ng-repeat="data in simulationGroupNames.data.CommonPrefixes">
 
-            <a href="" ng-click="logout(data.Prefix)">{{ data.Prefix }}</a>
+            <a href="" ng-click="getSimulationGroupFiles(data.Prefix)">{{ data.Prefix }}</a>
+
+
+        </li>
+    </ul>
+
+    <ul>
+        <li ng-repeat="data in simulationGroupFiles.data.Contents">
+
+            {{data}}
+
+            <img ng-src=="{{data.key}}" alt="Smiley face" height="42" width="42">
+
+            <p>{{data.Key}}</p>
 
 
         </li>

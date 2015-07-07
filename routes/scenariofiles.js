@@ -24,7 +24,7 @@ router.get('/', function (req, res, next) {
                 res.send('broken');
             } // an error occurred
             else {
-                //  console.log(data);
+                console.log(data.key);
                 res.json(data);
             }           // successful response
         });
