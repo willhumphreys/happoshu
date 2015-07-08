@@ -51,4 +51,3 @@ myApp.directive('targetBlank', function () {
         }
     };
 });
-
