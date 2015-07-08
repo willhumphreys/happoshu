@@ -42,8 +42,9 @@ router.get('/', function (req, res, next) {
                 res.send('broken');
             } // an error occurred
             else {
-                console.log(data.key);
-                res.json(data);
+                console.log('hello' + data);
+
+                res.json(data.Contents);
             }           // successful response
         });
         return params;
