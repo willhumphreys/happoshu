@@ -26,8 +26,9 @@
         </div>
     </div>
 
-    <div ng-repeat="data in simulationGroupFiles.data | orderBy: 'Key' | filter: 'png' ">
-        <div target-blank>
+
+    <div ng-repeat="data in simulationGroupFiles.data | orderBy: 'Key' | filter: 'png' " class="wrapper">
+        <div target-blank class="primary">
             <p>{{data.Key}}</p>
             <a ng-href="https://s3-us-west-2.amazonaws.com/livedata-matcha/{{data.Key}}"><img
                     ng-src="https://s3-us-west-2.amazonaws.com/livedata-matcha/{{data.Key}}" alt="{{data.Key}}"
@@ -35,5 +36,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>
