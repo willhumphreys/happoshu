@@ -8,6 +8,13 @@ myApp.service('dataService', function ($http) {
         });
     };
 
+    this.getResults = function () {
+        return $http({
+            method: 'GET',
+            url: 'http://localhost:3000/results'
+        });
+    };
+
     this.getSimulationGroupFiles = function (simulationGroupName) {
         console.log('service time with ' + simulationGroupName);
         return $http({
@@ -31,6 +38,10 @@ myApp.controller('FileController', function ($scope, dataService) {
         $scope.simulationGroupNames = dataResponse;
     });
 
+
+    dataService.getResults().then(function (dataResponse) {
+        $scope.results = dataResponse;
+    });
 
     console.log("what is this");
     //
