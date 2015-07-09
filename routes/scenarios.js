@@ -4,10 +4,8 @@ var router = express.Router();
 
 router.get('/', function (req, res, next) {
 
-    var s3 = new AWS.S3();
+    function handleMatchedBucket(delimter, s3) {
 
-
-    function handleMatchedBucket(delimter) {
         var params = {
             Bucket: 'livedata-matcha', /* required */
             Delimiter: delimter
@@ -27,7 +25,7 @@ router.get('/', function (req, res, next) {
 
     }
 
-    handleMatchedBucket('/');
+    handleMatchedBucket('/', new AWS.S3());
 
 });
 

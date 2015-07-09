@@ -4,13 +4,11 @@ var router = express.Router();
 
 router.get('/', function (req, res, next) {
 
-    var s3 = new AWS.S3();
+    function handleMatchedBucket(prefix, s3) {
 
-
-    function handleMatchedBucket() {
         var params = {
-            Bucket: 'livedata-matcha',
-            Delimiter: '/results'
+            Bucket: 'livedata-matcha', /* required */
+            Prefix: prefix
 
         };
 
@@ -21,42 +19,25 @@ router.get('/', function (req, res, next) {
             } // an error occurred
             else {
                 console.log(data);
+
+                console.log(data.Contents)
+
+                for (var i = 0; i < data.Contents.length; i++) {
+                    console.log(data.Contents[i].Key);
+
+                    var params = {Bucket: 'livedata-matcha', Key: data.Contents[i].Key};
+                    var whatWeGot = s3.getObject(params);
+                    console.log(whatWeGot);
+
+                }
+
                 res.json(data);
             }           // successful response
         });
 
     }
 
-    function handleBucketList(data) {
-        var handled = false;
-        for (var index in data.Buckets) {
-            var bucket = data.Buckets[index];
-            var name = bucket.Name;
-            console.log("Bucket: ", name, ' : ', bucket.CreationDate);
-
-            if (name == 'livedata-matcha') {
-
-                handled = true;
-                handleMatchedBucket();
-            }
-
-        }
-
-
-        if (!handled) {
-            res.json('bucket not found');
-        }
-    }
-
-    s3.listBuckets(function (err, data) {
-        if (err) {
-            console.log("Error:", err);
-        }
-        else {
-            handleBucketList(data);
-        }
-    });
-
+    handleMatchedBucket('results', new AWS.S3());
 
 });
 
