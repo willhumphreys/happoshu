@@ -29,18 +29,14 @@ myApp.service('dataService', function ($http) {
 
 myApp.controller('FileController', function ($scope, dataService) {
 
-    var columnDefs2 = [
-        {name: 'Account'},
-        {name: 'Profit'},
-        {name: 'High'},
-        {name: 'Low'}
-    ];
+    $scope.columns = [{field: 'Account'}, {field: 'Profit'}, {field: 'Winners'}, {field: 'Losers'}, {field: 'ProfitPerTrade'}];
 
-    $scope.columns = [{field: 'Account'}, {field: 'Profit'}];
-
-    $scope.gridOpts = {
+    $scope.gridOptions = {
+        enableSorting: true,
         columnDefs: $scope.columns
+
     };
+
 
     $scope.logout = function (value) {
         console.log('Hello I was called ' + value);
@@ -56,7 +52,9 @@ myApp.controller('FileController', function ($scope, dataService) {
 
 
     dataService.getResults().then(function (dataResponse) {
+
         $scope.results = dataResponse;
+        $scope.gridOptions.data = dataResponse.data;
     });
 
     console.log("what is this");
