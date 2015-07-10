@@ -43,7 +43,7 @@ router.get('/', function (req, res, next) {
                         //  console.log(resultsJson);
                         allResultsJson = allResultsJson.concat(resultsJson);
 
-                        console.log(allResultsJson);
+                        //   console.log(allResultsJson);
                         finished();
                     }).send();
 
