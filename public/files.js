@@ -30,7 +30,9 @@ myApp.service('dataService', function ($http) {
 myApp.controller('FileController', function ($scope, dataService) {
 
     $scope.columns =
-        [{field: 'Account'},
+        [
+            {field: 'RunName'},
+            {field: 'Account'},
             {field: 'Profit', type: 'number'},
             {field: 'Winners', type: 'number'},
             {field: 'Losers', type: 'number'},
