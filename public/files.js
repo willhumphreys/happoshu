@@ -29,7 +29,13 @@ myApp.service('dataService', function ($http) {
 
 myApp.controller('FileController', function ($scope, dataService) {
 
-    $scope.columns = [{field: 'Account'}, {field: 'Profit'}, {field: 'Winners'}, {field: 'Losers'}, {field: 'ProfitPerTrade'}];
+    $scope.columns =
+        [{field: 'Account'},
+            {field: 'Profit', type: 'number'},
+            {field: 'Winners', type: 'number'},
+            {field: 'Losers', type: 'number'},
+            {field: 'ProfitPerTrade', type: 'number'}
+        ];
 
     $scope.gridOptions = {
         enableSorting: true,
