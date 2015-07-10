@@ -1,4 +1,7 @@
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['ngTouch', 'ui.grid']);
+
+
+
 
 myApp.service('dataService', function ($http) {
     this.getSimulationGroupNames = function () {
@@ -25,6 +28,19 @@ myApp.service('dataService', function ($http) {
 });
 
 myApp.controller('FileController', function ($scope, dataService) {
+
+    var columnDefs2 = [
+        {name: 'Account'},
+        {name: 'Profit'},
+        {name: 'High'},
+        {name: 'Low'}
+    ];
+
+    $scope.columns = [{field: 'Account'}, {field: 'Profit'}];
+
+    $scope.gridOpts = {
+        columnDefs: $scope.columns
+    };
 
     $scope.logout = function (value) {
         console.log('Hello I was called ' + value);
