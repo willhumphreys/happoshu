@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngTouch', 'ui.grid']);
+var myApp = angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns']);
 
 
 
@@ -32,14 +32,15 @@ myApp.controller('FileController', function ($scope, dataService) {
     $scope.columns =
         [
             {field: 'RunName'},
-            {field: 'Account'},
-            {field: 'Profit', type: 'number'},
-            {field: 'Winners', type: 'number'},
-            {field: 'Losers', type: 'number'},
-            {field: 'ProfitPerTrade', type: 'number'}
+            {field: 'Account', width: '5%', maxWidth: 200, minWidth: 100},
+            {field: 'Profit', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
+            {field: 'Winners', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
+            {field: 'Losers', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
+            {field: 'ProfitPerTrade', type: 'number', width: '5%', maxWidth: 250, minWidth: 190}
         ];
 
     $scope.gridOptions = {
+        enableColumnResizing: true,
         enableSorting: true,
         columnDefs: $scope.columns
 
