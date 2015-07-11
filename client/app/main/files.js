@@ -1,20 +1,18 @@
 var myApp = angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns']);
 
 
-
-
 myApp.service('dataService', function ($http) {
     this.getSimulationGroupNames = function () {
         return $http({
             method: 'GET',
-            url: 'http://localhost:3000/scenarios'
+            url: 'http://localhost:9000/api/scenarios'
         });
     };
 
     this.getResults = function () {
         return $http({
             method: 'GET',
-            url: 'http://localhost:3000/results'
+            url: 'http://localhost:9000/api/results'
         });
     };
 
@@ -22,7 +20,7 @@ myApp.service('dataService', function ($http) {
         console.log('service time with ' + simulationGroupName);
         return $http({
             method: 'GET',
-            url: 'http://localhost:3000/scenariofiles/' + simulationGroupName
+            url: 'http://localhost:9000/api/scenariofiles/' + simulationGroupName
         });
     };
 });

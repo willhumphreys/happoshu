@@ -1,8 +1,18 @@
-var express = require('express');
-var AWS = require('aws-sdk');
-var router = express.Router();
+/**
+ * Using Rails-like standard naming convention for endpoints.
+ * GET     /things              ->  index
+ * POST    /things              ->  create
+ * GET     /things/:id          ->  show
+ * PUT     /things/:id          ->  update
+ * DELETE  /things/:id          ->  destroy
+ */
 
-router.get('/', function (req, res, next) {
+'use strict';
+
+var AWS = require('aws-sdk');
+
+// Get list of things
+exports.index = function (req, res) {
 
     function handleMatchedBucket(delimter, s3) {
 
@@ -27,6 +37,8 @@ router.get('/', function (req, res, next) {
 
     handleMatchedBucket('/', new AWS.S3());
 
-});
+};
 
-module.exports = router;
+function handleError(res, err) {
+    return res.send(500, err);
+}
