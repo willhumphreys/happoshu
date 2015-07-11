@@ -27,7 +27,7 @@ myApp.service('dataService', function ($http) {
     };
 });
 
-myApp.controller('FileController', function ($scope, dataService) {
+myApp.controller('FileController', function ($scope, dataService, uiGridConstants) {
 
     $scope.columns =
         [
@@ -36,7 +36,14 @@ myApp.controller('FileController', function ($scope, dataService) {
             {field: 'Profit', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
             {field: 'Winners', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
             {field: 'Losers', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
-            {field: 'ProfitPerTrade', type: 'number', width: '5%', maxWidth: 250, minWidth: 190}
+            {
+                field: 'ProfitPerTrade', type: 'number', width: '5%', maxWidth: 250, minWidth: 190,
+                sort: {
+                    direction: uiGridConstants.DESC,
+                    priority: 1
+                }
+
+            }
         ];
 
     $scope.gridOptions = {
