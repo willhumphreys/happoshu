@@ -50,7 +50,7 @@ angular.module('controllers', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
         //$scope.simulationGroupFiles = null;
         $scope.getSimulationGroupFiles = function (value) {
             console.log('Our value is ' + value);
-            dataService.getSimulationGroupFiles(value).then(function (dataResponse) {
+            ScenarioService.getSimulationGroupFiles(value).then(function (dataResponse) {
                 $scope.simulationGroupFiles = dataResponse;
             });
         }
