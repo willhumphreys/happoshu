@@ -1,27 +1,64 @@
-'use strict';
+angular.module('myController', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
+    .controller('FileController', function ($scope, dataService, uiGridConstants) {
 
-angular.module('happoshuApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
-    $scope.awesomeThings = [];
+        $scope.columns =
+            [
+                {field: 'RunName'},
+                {field: 'Account', width: '5%', maxWidth: 200, minWidth: 100},
+                {field: 'Profit', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
+                {field: 'Winners', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
+                {field: 'Losers', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
+                {
+                    field: 'ProfitPerTrade', type: 'number', width: '5%', maxWidth: 250, minWidth: 190,
+                    sort: {
+                        direction: uiGridConstants.DESC,
+                        priority: 1
+                    }
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
+                }
+            ];
+
+        $scope.gridOptions = {
+            enableColumnResizing: true,
+            enableSorting: true,
+            columnDefs: $scope.columns
+
+        };
+
+
+        $scope.logout = function (value) {
+            console.log('Hello I was called ' + value);
+            $scope.simulationGroupName = value;
+        };
+
+        $scope.simulationGroupNames = null;
+
+
+        dataService.getSimulationGroupNames().then(function (dataResponse) {
+            $scope.simulationGroupNames = dataResponse;
+        });
+
+
+        dataService.getResults().then(function (dataResponse) {
+
+            $scope.results = dataResponse;
+            $scope.gridOptions.data = dataResponse.data;
+        });
+
+        console.log("what is this");
+        //
+        //$scope.simulationGroupFiles = null;
+        $scope.getSimulationGroupFiles = function (value) {
+            console.log('Our value is ' + value);
+            dataService.getSimulationGroupFiles(value).then(function (dataResponse) {
+                $scope.simulationGroupFiles = dataResponse;
+            });
+        }
+    }).directive('targetBlank', function () {
+        return {
+            compile: function (element) {
+                var elems = (element.prop("tagName") === 'A') ? element : element.find('a');
+                elems.attr("target", "_blank");
+            }
+        };
     });
-
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
-
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
-
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });
-  });
