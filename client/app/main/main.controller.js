@@ -1,5 +1,5 @@
-angular.module('myController', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
-    .controller('FileController', function ($scope, dataService, uiGridConstants) {
+angular.module('controllers', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
+    .controller('ScenarioController', function ($scope, ScenarioService, uiGridConstants) {
 
         $scope.columns =
             [
@@ -34,12 +34,12 @@ angular.module('myController', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
         $scope.simulationGroupNames = null;
 
 
-        dataService.getSimulationGroupNames().then(function (dataResponse) {
+        ScenarioService.getSimulationGroupNames().then(function (dataResponse) {
             $scope.simulationGroupNames = dataResponse;
         });
 
 
-        dataService.getResults().then(function (dataResponse) {
+        ScenarioService.getResults().then(function (dataResponse) {
 
             $scope.results = dataResponse;
             $scope.gridOptions.data = dataResponse.data;

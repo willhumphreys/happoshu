@@ -1,6 +1,6 @@
-angular.module('myService', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns']).
+angular.module('services', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns']).
 
-    service('dataService', function ($http) {
+    service('ScenarioService', function ($http) {
         this.getSimulationGroupNames = function () {
             return $http({
                 method: 'GET',
