@@ -1,30 +1,5 @@
-var myApp = angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns']);
-
-myApp.service('dataService', function ($http) {
-    this.getSimulationGroupNames = function () {
-        return $http({
-            method: 'GET',
-            url: 'http://localhost:9000/api/scenarios'
-        });
-    };
-
-    this.getResults = function () {
-        return $http({
-            method: 'GET',
-            url: 'http://localhost:9000/api/results'
-        });
-    };
-
-    this.getSimulationGroupFiles = function (simulationGroupName) {
-        console.log('service time with ' + simulationGroupName);
-        return $http({
-            method: 'GET',
-            url: 'http://localhost:9000/api/scenarios/' + simulationGroupName
-        });
-    };
-});
-
-myApp.controller('FileController', function ($scope, dataService, uiGridConstants) {
+angular.module('myController', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
+    .controller('FileController', function ($scope, dataService, uiGridConstants) {
 
     $scope.columns =
         [
@@ -79,9 +54,7 @@ myApp.controller('FileController', function ($scope, dataService, uiGridConstant
             $scope.simulationGroupFiles = dataResponse;
         });
     }
-});
-
-myApp.directive('targetBlank', function () {
+    }).directive('targetBlank', function () {
     return {
         compile: function (element) {
             var elems = (element.prop("tagName") === 'A') ? element : element.find('a');
