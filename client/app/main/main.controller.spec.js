@@ -14,19 +14,10 @@ describe('ScenarioController', function () {
     beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
         $httpBackend = _$httpBackend_;
         $httpBackend.expectGET('http://localhost:9000/api/scenarios')
-            .respond({
-                "IsTruncated": false,
-                "Marker": "",
-                "Contents": [],
-                "Name": "livedata-matcha",
-                "Prefix": "",
-                "Delimiter": "/",
-                "MaxKeys": 1000,
-                "CommonPrefixes": [{"Prefix": "BasicScriptBuilder_Buy_SPX/"}, {"Prefix": "BasicScriptBuilder_Buy_SPX_90SMA/"}, {"Prefix": "BasicScriptBuilder_Buy_SPX_Below1SD/"}, {"Prefix": "BasicScriptBuilder_Buy_SPX_Below2SD/"}, {"Prefix": "BasicScriptBuilder_Buy_SPX_Below3SD/"}, {"Prefix": "BasicScriptBuilder_Buy_SPX_BuyGapRange/"}, {"Prefix": "BasicScriptBuilder_Buy_SPX_CrossOver_Monday/"}, {"Prefix": "BasicScriptBuilder_Sell_SPX/"}, {"Prefix": "BasicScriptBuilder_Sell_SPX_90SMA/"}, {"Prefix": "BasicScriptBuilder_Sell_SPX_Above1SD/"}, {"Prefix": "BasicScriptBuilder_Sell_SPX_Above2SD/"}, {"Prefix": "BasicScriptBuilder_Sell_SPX_CrossOver_Monday/"}, {"Prefix": "SPXBuyAtTimeAndDayOfWeek/"}, {"Prefix": "SPXBuyAtTimeAndDayOfWeek_Buy/"}, {"Prefix": "SPXBuyAtTimeAndDayOfWeek_Buy_GapRange/"}, {"Prefix": "SPXBuyAtTimeAndDayOfWeek_Sell/"}, {"Prefix": "SPXNegativeGap/"}, {"Prefix": "SPXNegativeGap3BandsScenario/"}, {"Prefix": "SPXNegativeGapRangesMoreStopsScenario/"}, {"Prefix": "SPXNegativeGapRangesStdDevScenario/"}, {"Prefix": "SPXPositiveGapMoreStopsCrossOverScenario/"}, {"Prefix": "SPXPositiveGapMoreStopsScenario/"}, {"Prefix": "SPXPositiveGapRangesMoreStopsScenario/"}, {"Prefix": "SPXPositiveGapRangesStdDevScenario/"}, {"Prefix": "SPXSellAtTimeAndDayOfWeek/"}, {"Prefix": "logs/"}, {"Prefix": "results/"}]
-            });
+            .respond({scenario: "good scenario"});
 
         $httpBackend.expectGET('http://localhost:9000/api/results')
-            .respond({});
+            .respond({result: "first result"});
 
         scope = $rootScope.$new();
         MainCtrl = $controller('ScenarioController', {
@@ -34,8 +25,18 @@ describe('ScenarioController', function () {
         });
     }));
 
-    it('should attach a list of things to the scope', function () {
+    it('should attach a list of scenarios to the scope', function () {
         $httpBackend.flush();
-        expect(scope.simulationGroupNames.data.Delimiter).toEqual("/");
+        expect(scope.simulationGroupNames.data.scenario).toEqual("good scenario");
+    });
+
+    it('should attach a list of results to the scope', function () {
+        $httpBackend.flush();
+        expect(scope.results.data.result).toEqual("first result");
+    });
+
+    it('should attach a list of results to the scope', function () {
+        $httpBackend.flush();
+        expect(scope.gridOptions.data.result).toEqual("first result");
     });
 });
