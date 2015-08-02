@@ -6,7 +6,20 @@ angular.module('controllers', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
                 {field: 'RunName'},
                 {field: 'Account', width: '5%', maxWidth: 200, minWidth: 100},
                 {field: 'Profit', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
-                {field: 'Winners', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
+
+                // multiple filters
+                {
+                    field: 'Winners', type: 'number', width: '5%', maxWidth: 200, minWidth: 90, filters: [
+                    {
+                        condition: uiGridConstants.filter.GREATER_THAN,
+                        placeholder: 'greater than'
+                    },
+                    {
+                        condition: uiGridConstants.filter.LESS_THAN,
+                        placeholder: 'less than'
+                    }]
+
+                },
                 {field: 'Losers', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
                 {
                     field: 'ProfitPerTrade', type: 'number', width: '5%', maxWidth: 250, minWidth: 190,
@@ -21,6 +34,7 @@ angular.module('controllers', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
         $scope.gridOptions = {
             enableColumnResizing: true,
             enableSorting: true,
+            enableFiltering: true,
             columnDefs: $scope.columns
 
         };
