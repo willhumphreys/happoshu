@@ -28,7 +28,10 @@ angular.module('controllers', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
                         priority: 1
                     }
 
-                }
+                },
+                {field: 'Stop', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
+                {field: 'OpenTickOffset', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
+                {field: 'Time', width: '5%', maxWidth: 200, minWidth: 90}
             ];
 
         $scope.gridOptions = {
