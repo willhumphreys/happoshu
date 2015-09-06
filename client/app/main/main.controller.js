@@ -30,8 +30,26 @@ angular.module('controllers', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
 
                 },
                 {field: 'Stop', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
-                {field: 'OpenTickOffset', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
-                {field: 'Time', width: '5%', maxWidth: 200, minWidth: 90}
+                {
+                    field: 'OpenTickOffset',
+                    type: 'number',
+                    width: '5%',
+                    maxWidth: 200,
+                    minWidth: 90,
+                    displayName: 'Offset'
+                },
+                {field: 'Time', width: '5%', maxWidth: 200, minWidth: 90},
+                {
+                    field: 'WinnerLoserRatio',
+                    type: 'number',
+                    width: '5%',
+                    maxWidth: 200,
+                    minWidth: 90,
+                    displayName: 'WLR'
+                },
+                {field: 'WinnerLoserSimulationRatio', width: '5%', maxWidth: 200, minWidth: 90, displayName: 'WLSR'},
+                {field: 'DayOfWeek', width: '5%', maxWidth: 200, minWidth: 90, displayName: 'DOW'}
+
             ];
 
         $scope.gridOptions = {
