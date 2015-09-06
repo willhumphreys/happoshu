@@ -37,22 +37,37 @@ exports.index = function (req, res) {
             } // an error occurred
             else {
 
-                var finished = underscore.after(data.Contents.length, doResponse);
+
 
                 console.log(data);
 
-                console.log(data.Contents)
+                console.log(data.Contents);
 
-
+                var filteredMergedJsonNames = [];
                 for (var i = 0; i < data.Contents.length; i++) {
-                    console.log(data.Contents[i].Key);
+                    var name = data.Contents[i].Key;
+                    if (name.indexOf("SPX") >= 0 && name.indexOf("365") < 0) {
+                        console.log("Pushing " + name)
+                        filteredMergedJsonNames.push(name);
+                    }
+                }
 
-                    //  var params = {Bucket: 'livedata-matcha', Key: data.Contents[i].Key};
+                var finished = underscore.after(filteredMergedJsonNames.length, doResponse);
+
+                var count = 0;
+                for (var i2 = 0; i2 < filteredMergedJsonNames.length; i2++) {
+
+                    var name2 = filteredMergedJsonNames[i2];
+
+                    console.log(i2 + " of " + filteredMergedJsonNames.length + " " + name2);
+
+                    console.log("Fetching " + name2);
                     s3.getObject({
                         Bucket: 'livedata-matcha',
-                        Key: data.Contents[i].Key
+                        Key: name2
                     }).on('success', function (response) {
-                        console.log("Key was", response.request.params.Key);
+                        count++;
+                        console.log("Key was", response.request.params.Key + " " + count);
                         // var resultsJson = response.Body.toString()
                         var resultsJson = JSON.parse(response.data.Body.toString());
                         //  console.log(resultsJson);
@@ -62,13 +77,12 @@ exports.index = function (req, res) {
                         finished();
                     }).send();
 
-
                 }
-
-
+                console.log("Finished retrieving data");
             }
 
             function doResponse() {
+                console.log("successful response");
                 res.json(allResultsJson);
             }// successful response
         });
