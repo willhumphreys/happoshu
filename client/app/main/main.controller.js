@@ -1,4 +1,4 @@
-angular.module('controllers', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
+angular.module('controllers', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.autoResize'])
     .controller('ScenarioController', function ($scope, ScenarioService, uiGridConstants) {
 
         $scope.columns =

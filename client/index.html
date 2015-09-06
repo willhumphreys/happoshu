@@ -23,14 +23,16 @@
 <body>
 <div ng-controller="ScenarioController">
     <p>Bucket: {{ simulationGroupNames.data.Name }}</p>
-    <ul>
-        <li ng-repeat="data in simulationGroupNames.data.CommonPrefixes">
-            <a href="" ng-click="getSimulationGroupFiles(data.Prefix)">{{ data.Prefix }}</a>
-        </li>
-    </ul>
+
+    <!-- Useful links but don't need at the moment -->
+    <!--<ul>-->
+    <!--<li ng-repeat="data in simulationGroupNames.data.CommonPrefixes">-->
+    <!--<a href="" ng-click="getSimulationGroupFiles(data.Prefix)">{{ data.Prefix }}</a>-->
+    <!--</li>-->
+    <!--</ul>-->
 
 
-    <div ui-grid="gridOptions" class="myGrid ui-grid-resize-columns"></div>
+    <div ui-grid="gridOptions" class="grid" ui-grid-auto-resize></div>
 
     <div class=row ng-repeat="data in simulationGroupFiles.data | orderBy: 'Key' | filter: 'png' track by $index"
          ng-if="$index % 3 == 0">
