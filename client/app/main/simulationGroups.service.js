@@ -1,4 +1,4 @@
-angular.module('services', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns']).
+angular.module('otherServices', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns']).
 
     service('SimulationGroupsService', function ($http) {
         this.getSimulationGroups = function () {

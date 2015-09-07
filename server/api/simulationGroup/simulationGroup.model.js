@@ -3,9 +3,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var SimulationGroupSchema = new Schema({
-    runName: String,
-    description: String
-});
+var SimulationGroupSchema = new Schema({any: Schema.Types.Mixed});
 
 module.exports = mongoose.model('SimulationGroup', SimulationGroupSchema);

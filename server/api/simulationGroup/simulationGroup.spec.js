@@ -14,6 +14,8 @@ describe('GET /api/simulationGroups', function () {
             .end(function (err, res) {
                 if (err) return done(err);
                 res.body.should.be.instanceof(Array);
+                console.log(res.body);
+                res.body.should.have.a.lengthOf(48);
                 done();
             });
     });

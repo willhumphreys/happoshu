@@ -9,10 +9,10 @@ var errors = require('./components/errors');
 module.exports = function (app) {
 
     // Insert routes below
-    app.use('/api/things', require('./api/thing'));
+    app.use('/api/simulationGroups', require('./api/simulationGroup'));
     app.use('/api/scenarios', require('./api/scenario'));
     app.use('/api/results', require('./api/result'));
-    app.use('/api/simulationGroups', require('./api/simulationGroup'));
+
 
     // All undefined asset or api routes should return a 404
     app.route('/:url(api|auth|components|app|bower_components|assets)/*')

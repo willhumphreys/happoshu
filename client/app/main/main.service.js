@@ -22,12 +22,4 @@ angular.module('services', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns']).
                 url: 'http://localhost:9000/api/scenarios/' + simulationGroupName
             });
         };
-
-        this.getSimulationGroups = function () {
-            console.log('Getting simulation groups');
-            return $http({
-                method: 'GET',
-                url: 'http://localhost:9000/api/simulationGroups'
-            });
-        }
     });

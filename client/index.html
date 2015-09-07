@@ -6,7 +6,9 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-touch.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
     <script src="app/main/main.controller.js"></script>
+    <script src="app/main/simulationGroups.controller.js"></script>
     <script src="app/main/main.service.js"></script>
+    <script src="app/main/simulationGroups.service.js"></script>
     <script src="app/main/core.js"></script>
     <link rel="stylesheet" href="app/app.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -34,6 +36,7 @@
 
     <div ui-grid="gridOptions" class="grid" ui-grid-auto-resize></div>
 
+
     <div class=row ng-repeat="data in simulationGroupFiles.data | orderBy: 'Key' | filter: 'png' track by $index"
          ng-if="$index % 3 == 0">
 
@@ -49,6 +52,9 @@
         </div>
     </div>
 
+</div>
+<div ng-controller="SimulationGroupsController">
+    <div ui-grid="gridOptions2" class="grid" ui-grid-auto-resize></div>
 </div>
 
 </body>

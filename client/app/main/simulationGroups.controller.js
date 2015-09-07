@@ -1,4 +1,4 @@
-angular.module('controllers', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
+angular.module('otherControllers', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
     .controller('SimulationGroupsController', function ($scope, SimulationGroupsService, uiGridConstants) {
 
         $scope.columns =
@@ -9,7 +9,7 @@ angular.module('controllers', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
 
             ];
 
-        $scope.gridOptions = {
+        $scope.gridOptions2 = {
             enableColumnResizing: true,
             enableSorting: true,
             enableFiltering: true,
@@ -19,7 +19,10 @@ angular.module('controllers', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns'])
 
         SimulationGroupsService.getSimulationGroups().then(function (dataResponse) {
 
-            $scope.results = dataResponse;
-            $scope.gridOptions.data = dataResponse.data;
+            console.log('hello');
+            //console.log(dataResponse);
+            console.log('endhello');
+            $scope.results2 = dataResponse;
+            $scope.gridOptions2.data = dataResponse.data;
         });
     });
