@@ -5,7 +5,7 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/happoshu-dev'
+    uri: 'mongodb://localhost/es'
   },
 
   seedDB: true
