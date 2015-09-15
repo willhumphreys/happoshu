@@ -66,12 +66,7 @@ angular.module('happoshuApp')
         $scope.simulationGroupName = value;
       };
 
-      $scope.simulationGroupNames = null;
 
-
-      ScenarioService.getSimulationGroupNames().then(function (dataResponse) {
-        $scope.simulationGroupNames = dataResponse;
-      });
 
 
       ScenarioService.getResults().then(function (dataResponse) {
@@ -83,12 +78,6 @@ angular.module('happoshuApp')
       console.log("what is this");
       //
       //$scope.simulationGroupFiles = null;
-      $scope.getSimulationGroupFiles = function (value) {
-        console.log('Our value is ' + value);
-        ScenarioService.getSimulationGroupFiles(value).then(function (dataResponse) {
-          $scope.simulationGroupFiles = dataResponse;
-        });
-      }
     }).directive('targetBlank', function () {
       return {
         compile: function (element) {
