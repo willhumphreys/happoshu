@@ -1,42 +1,28 @@
 'use strict';
 
-describe('ScenarioController', function () {
+describe('Controller: MainCtrl', function () {
 
-    // load the controller's module
-    beforeEach(module('myApp'));
-    beforeEach(module('socketMock'));
+  // load the controller's module
+  beforeEach(module('happoshuApp'));
 
-    var MainCtrl,
-        scope,
-        $httpBackend;
+  var MainCtrl,
+      scope,
+      $httpBackend;
 
-    // Initialize the controller and a mock scope
-    beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
-        $httpBackend = _$httpBackend_;
-        $httpBackend.expectGET('http://localhost:9000/api/scenarios')
-            .respond({scenario: "good scenario"});
+  // Initialize the controller and a mock scope
+  beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
+    $httpBackend = _$httpBackend_;
+    $httpBackend.expectGET('/api/things')
+      .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
 
-        $httpBackend.expectGET('http://localhost:9000/api/results')
-            .respond({result: "first result"});
-
-        scope = $rootScope.$new();
-        MainCtrl = $controller('ScenarioController', {
-            $scope: scope
-        });
-    }));
-
-    it('should attach a list of scenarios to the scope', function () {
-        $httpBackend.flush();
-        expect(scope.simulationGroupNames.data.scenario).toEqual("good scenario");
+    scope = $rootScope.$new();
+    MainCtrl = $controller('MainCtrl', {
+      $scope: scope
     });
+  }));
 
-    it('should attach a list of results to the scope', function () {
-        $httpBackend.flush();
-        expect(scope.results.data.result).toEqual("first result");
-    });
-
-    it('should attach a list of results to the scope', function () {
-        $httpBackend.flush();
-        expect(scope.gridOptions.data.result).toEqual("first result");
-    });
+  it('should attach a list of things to the scope', function () {
+    $httpBackend.flush();
+    expect(scope.awesomeThings.length).toBe(4);
+  });
 });

@@ -1,5 +1,4 @@
-angular.module('services', ['ngTouch', 'ui.grid', 'ui.grid.resizeColumns']).
-
+angular.module('happoshuApp').
     service('ScenarioService', function ($http) {
         this.getSimulationGroupNames = function () {
             return $http({

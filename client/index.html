@@ -1,61 +1,96 @@
 <!doctype html>
-<html ng-app="myApp">
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
 <head>
-    <title>Shochu</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-touch.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
-    <script src="app/main/main.controller.js"></script>
-    <script src="app/main/simulationGroups.controller.js"></script>
-    <script src="app/main/main.service.js"></script>
-    <script src="app/main/simulationGroups.service.js"></script>
-    <script src="app/main/core.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(client) app/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
-    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
-    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
-    <script src="http://ui-grid.info/release/ui-grid-unstable.js"></script>
-    <link rel="stylesheet" href="http://ui-grid.info/release/ui-grid-unstable.css" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <![endif]-->
+    <!-- injector:css -->
+    <!-- endinjector -->
+    <!-- endbuild -->
 </head>
+<body ng-app="happoshuApp">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
 
-<body>
-<div ng-controller="ScenarioController">
-    <p>Bucket: {{ simulationGroupNames.data.Name }}</p>
+<!-- Add your site or application content here -->
+<div ng-view=""></div>
 
-    <!-- Useful links but don't need at the moment -->
-    <!--<ul>-->
-    <!--<li ng-repeat="data in simulationGroupNames.data.CommonPrefixes">-->
-    <!--<a href="" ng-click="getSimulationGroupFiles(data.Prefix)">{{ data.Prefix }}</a>-->
-    <!--</li>-->
-    <!--</ul>-->
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+</script>
+
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+<!-- build:js({client,node_modules}) app/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/lodash/dist/lodash.compat.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-socket-io/socket.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+<script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+<script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+<script src="http://ui-grid.info/release/ui-grid-unstable.js"></script>
+<link rel="stylesheet" href="http://ui-grid.info/release/ui-grid-unstable.css" type="text/css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 
-    <div ui-grid="gridOptions" class="grid" ui-grid-auto-resize></div>
+<!-- build:js({.tmp,client}) app/app.js -->
 
-
-    <div class=row ng-repeat="data in simulationGroupFiles.data | orderBy: 'Key' | filter: 'png' track by $index"
-         ng-if="$index % 3 == 0">
-
-        <div class="col-md-4 letter-box"
-             ng-repeat="i in [$index, $index + 1, $index + 2]"
-             ng-if="simulationGroupFiles.data[i] != null">
-
-            <div><p>{{simulationGroupFiles.data[i].Key}}</p>
-                <a ng-href="https://s3-us-west-2.amazonaws.com/livedata-matcha/{{simulationGroupFiles.data[i].Key}}"><img
-                        ng-src="https://s3-us-west-2.amazonaws.com/livedata-matcha/{{simulationGroupFiles.data[i].Key}}"
-                        alt="{{simulationGroupFiles.data[i].Key}}"
-                        height="100" width="200"/></a></div>
-        </div>
-    </div>
-
-</div>
-<div ng-controller="SimulationGroupsController">
-    <div ui-grid="gridOptions2" class="grid" ui-grid-auto-resize></div>
-</div>
-
+<script src="app/app.js"></script>
+<!-- injector:js -->
+<script src="app/executionStats/executionStats.controller.js"></script>
+<script src="app/executionStats/executionStats.js"></script>
+<script src="app/main/main.service.js"></script>
+<script src="app/main/main.controller.js"></script>
+<script src="app/simulationGroups/simulationGroups.controller.js"></script>
+<script src="app/simulationGroups/simulationGroups.service.js"></script>
+<script src="app/main/main.js"></script>
+<script src="app/simulationGroups/simulationGroups.js"></script>
+<script src="components/navbar/navbar.controller.js"></script>
+<!-- endinjector -->
+<!-- endbuild -->
 </body>
 </html>

@@ -4,8 +4,7 @@ angular.module('happoshuApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute',
-  'btford.socket-io'
+  'ngRoute','ngTouch', 'ui.grid'
 ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider

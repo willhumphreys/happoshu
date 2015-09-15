@@ -1,38 +1,31 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+Hello World....
+<div ng-controller="ScenarioController">
+  <p>Bucket: {{ simulationGroupNames.data.Name }}</p>
 
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
-  </div>
-</header>
+  <!-- Useful links but don't need at the moment -->
+  <!--<ul>-->
+  <!--<li ng-repeat="data in simulationGroupNames.data.CommonPrefixes">-->
+  <!--<a href="" ng-click="getSimulationGroupFiles(data.Prefix)">{{ data.Prefix }}</a>-->
+  <!--</li>-->
+  <!--</ul>-->
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="deleteThing(thing)">&times;</button></a></li>
-      </ul>
+
+  <div ui-grid="gridOptions" class="grid" ui-grid-auto-resize></div>
+
+
+  <div class=row ng-repeat="data in simulationGroupFiles.data | orderBy: 'Key' | filter: 'png' track by $index"
+       ng-if="$index % 3 == 0">
+
+    <div class="col-md-4 letter-box"
+         ng-repeat="i in [$index, $index + 1, $index + 2]"
+         ng-if="simulationGroupFiles.data[i] != null">
+
+      <div><p>{{simulationGroupFiles.data[i].Key}}</p>
+        <a ng-href="https://s3-us-west-2.amazonaws.com/livedata-matcha/{{simulationGroupFiles.data[i].Key}}"><img
+                ng-src="https://s3-us-west-2.amazonaws.com/livedata-matcha/{{simulationGroupFiles.data[i].Key}}"
+                alt="{{simulationGroupFiles.data[i].Key}}"
+                height="100" width="200"/></a></div>
     </div>
   </div>
 
-  <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
-      </span>
-    </p>
-  </form>
 </div>
-
-<footer class="footer">
-  <div class="container">
-      <p>Angular Fullstack v2.0.13 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
-  </div>
-</footer>

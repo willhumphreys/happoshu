@@ -18,10 +18,7 @@ module.exports = function(config) {
       'client/bower_components/angular-cookies/angular-cookies.js',
       'client/bower_components/angular-sanitize/angular-sanitize.js',
       'client/bower_components/angular-route/angular-route.js',
-      'client/bower_components/angular-touch/angular-touch.js',
       'client/bower_components/lodash/dist/lodash.compat.js',
-      'client/bower_components/angular-socket-io/socket.js',
-      'client/bower_components/ui-grid-unstable/release/3.0.0-rc.3/ui-grid.js',
       'client/app/app.js',
       'client/app/app.coffee',
       'client/app/**/*.js',
@@ -47,6 +44,8 @@ module.exports = function(config) {
     ngJade2JsPreprocessor: {
       stripPrefix: 'client/'
     },
+
+    
 
     // list of files / patterns to exclude
     exclude: [],
