@@ -4,7 +4,7 @@ angular.module('happoshuApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute','ngTouch', 'ui.grid'
+    'ngRoute', 'ngTouch', 'ui.grid', 'ui.grid.resizeColumns'
 ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
