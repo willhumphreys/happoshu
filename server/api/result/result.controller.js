@@ -46,7 +46,7 @@ exports.index = function (req, res) {
                 var filteredMergedJsonNames = [];
                 for (var i = 0; i < data.Contents.length; i++) {
                     var name = data.Contents[i].Key;
-                    if (name.indexOf("SPX") >= 0 && name.indexOf("365") >= 0) {
+                    if (name.indexOf("SPX") >= 0 && name.indexOf("365") < 0) {
                         console.log("Pushing " + name);
                         filteredMergedJsonNames.push(name);
                     }

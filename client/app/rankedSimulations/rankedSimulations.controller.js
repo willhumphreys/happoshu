@@ -32,6 +32,7 @@ angular.module('happoshuApp')
 
                 },
                 {field: 'Stop', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
+                {field: 'TrailingStop', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
                 {
                     field: 'OpenTickOffset',
                     type: 'number',
@@ -68,12 +69,14 @@ angular.module('happoshuApp')
             $scope.simulationGroupName = value;
         };
 
+        if ($scope.results == null) {
 
-        ScenarioService.getResults().then(function (dataResponse) {
+            ScenarioService.getResults().then(function (dataResponse) {
 
-            $scope.results = dataResponse;
-            $scope.gridOptions.data = dataResponse.data;
-        });
+                $scope.results = dataResponse;
+                $scope.gridOptions.data = dataResponse.data;
+            });
+        }
 
         console.log("what is this");
         //
