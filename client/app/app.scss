@@ -21,6 +21,15 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
     }
 }
 
+.grid {
+  position: relative;
+  height: 900px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 // Component styles are injected through grunt
 // injector
 @import 'executionStats/executionStats.scss';
