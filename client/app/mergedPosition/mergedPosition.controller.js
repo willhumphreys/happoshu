@@ -34,7 +34,7 @@ angular.module('happoshuApp')
                 {field: 'Stop', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
                 {field: 'TrailingStop', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
                 {
-                    field: 'OpenTickOffset',
+                    field: 'TickOffset',
                     type: 'number',
                     width: '5%',
                     maxWidth: 200,
