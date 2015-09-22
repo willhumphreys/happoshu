@@ -6,6 +6,7 @@ angular.module('happoshuApp')
       $scope.columns =
           [
             {field: 'runName'},
+              {field: 'mergedPositions'},
             {field: 'description', width: '5%', maxWidth: 200, minWidth: 100},
 
 
@@ -24,7 +25,7 @@ angular.module('happoshuApp')
         console.log('hello');
         //console.log(dataResponse);
         console.log('endhello');
-        $scope.results2 = dataResponse;
+          // $scope.results2 = dataResponse;
         $scope.gridOptions2.data = dataResponse.data;
       });
     });
