@@ -24,6 +24,7 @@ angular.module('happoshuApp')
                 {field: 'Losers', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
                 {
                     field: 'ProfitPerTrade', type: 'number', width: '5%', maxWidth: 250, minWidth: 190,
+                    cellFilter: 'number: 2',
                     sort: {
                         direction: uiGridConstants.DESC,
                         priority: 1
@@ -43,6 +44,7 @@ angular.module('happoshuApp')
                 {field: 'Time', width: '5%', maxWidth: 200, minWidth: 90},
                 {
                     field: 'WinnerLoserRatio',
+                    cellFilter: 'number: 2',
                     type: 'number',
                     width: '5%',
                     maxWidth: 200,
