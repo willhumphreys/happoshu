@@ -41,7 +41,7 @@ angular.module('happoshuApp')
                     minWidth: 90,
                     displayName: 'Offset'
                 },
-                {field: 'Time', width: '5%', maxWidth: 200, minWidth: 90},
+                {field: 'time', width: '5%', maxWidth: 200, minWidth: 90},
                 {
                     field: 'WinnerLoserRatio',
                     cellFilter: 'number: 2',
@@ -52,7 +52,7 @@ angular.module('happoshuApp')
                     displayName: 'WLR'
                 },
 
-                {field: 'DayOfWeek', width: '5%', maxWidth: 200, minWidth: 90, displayName: 'DOW'}
+                {field: 'dayOfWeek', width: '5%', maxWidth: 200, minWidth: 90, displayName: 'DOW'}
 
             ];
 
