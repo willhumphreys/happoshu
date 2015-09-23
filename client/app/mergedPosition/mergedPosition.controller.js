@@ -53,11 +53,62 @@ angular.module('happoshuApp')
                 },
 
                 {field: 'dayOfWeek', width: '5%', maxWidth: 200, minWidth: 90, displayName: 'DOW'},
-                //{field: 'WinningSimulations', width: '5%', maxWidth: 200, minWidth: 90, displayName: 'Winners S'},
-                //{field: 'LosingSimulations', width: '5%', maxWidth: 200, minWidth: 90, displayName: 'Losers S'},
-                //{field: 'TotalSimulations', width: '5%', maxWidth: 200, minWidth: 90, displayName: 'Total S'},
-                {field: 'WinnerLoserRationSimulations', width: '5%', maxWidth: 200, minWidth: 90, displayName: 'WLRS'},
-                {field: 'LoserWinnerRatioSimulations', width: '5%', maxWidth: 200, minWidth: 90, displayName: 'LWRS'}
+                {
+                    field: 'WinningSimulations',
+                    width: '5%',
+                    maxWidth: 200,
+                    minWidth: 90,
+                    displayName: 'Winners S',
+                    cellFilter: 'number: 2'
+                },
+                {
+                    field: 'LosingSimulations',
+                    width: '5%',
+                    maxWidth: 200,
+                    minWidth: 90,
+                    displayName: 'Losers S',
+                    cellFilter: 'number: 2'
+                },
+                {
+                    field: 'TotalSimulations',
+                    width: '5%',
+                    maxWidth: 200,
+                    minWidth: 90,
+                    displayName: 'Total S',
+                    cellFilter: 'number: 2'
+                },
+                {
+                    field: 'WinnerLoserRatio',
+                    width: '5%',
+                    maxWidth: 200,
+                    minWidth: 90,
+                    displayName: 'WLR',
+                    cellFilter: 'number: 2'
+                },
+                {
+                    field: 'LoserWinnerRatio',
+                    width: '5%',
+                    maxWidth: 200,
+                    minWidth: 90,
+                    displayName: 'LWR',
+                    cellFilter: 'number: 2'
+                },
+                {
+                    field: 'WinnerLoserRationSimulations',
+                    width: '5%',
+                    maxWidth: 200,
+                    minWidth: 90,
+                    displayName: 'WLRS',
+                    cellFilter: 'number: 2'
+                },
+                {
+                    field: 'LoserWinnerRatioSimulations',
+                    width: '5%',
+                    maxWidth: 200,
+                    minWidth: 90,
+                    displayName: 'LWRS',
+                    cellFilter: 'number: 2'
+                }
 
             ];
 
