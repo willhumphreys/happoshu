@@ -5,7 +5,7 @@ var MergedPosition = require('./mergedPosition.model');
 
 // Get list of mergedPositions
 exports.index = function (req, res) {
-    var dayOfWeek = req.query.dayOfWeek;
+    var contract = req.query.contract;
 
 
     ////MergedPosition.find({'Winners': {$gt: 5}}, function (err, mergedPositions) {
@@ -19,9 +19,9 @@ exports.index = function (req, res) {
 
     var positionBuilder = MergedPosition.
         find().where('Winners').gt(5);
-    if (dayOfWeek != undefined) {
+    if (contract != undefined) {
         console.log("Here I am");
-        positionBuilder = positionBuilder.where('dayOfWeek').equals(dayOfWeek);
+        positionBuilder = positionBuilder.where('contract').equals(contract);
     }
 
     positionBuilder.limit(10).
