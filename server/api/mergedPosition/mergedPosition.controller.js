@@ -5,12 +5,34 @@ var MergedPosition = require('./mergedPosition.model');
 
 // Get list of mergedPositions
 exports.index = function (req, res) {
-    MergedPosition.find({'Winners': {$gt: 5}}, function (err, mergedPositions) {
-        if (err) {
-            return handleError(res, err);
-        }
-        return res.json(200, mergedPositions);
-    });
+    var dayOfWeek = req.query.dayOfWeek;
+
+
+    ////MergedPosition.find({'Winners': {$gt: 5}}, function (err, mergedPositions) {
+    //MergedPosition.find({$and: [ { Winners: { $gt: 5 } }, { dayOfWeek: { $eq: dayOfWeek } } ]}, function (err, mergedPositions) {
+    //    if (err) {
+    //        return handleError(res, err);
+    //    }
+    //    return res.json(200, mergedPositions);
+    //});
+
+
+    var positionBuilder = MergedPosition.
+        find().where('Winners').gt(5);
+    if (dayOfWeek != undefined) {
+        console.log("Here I am");
+        positionBuilder = positionBuilder.where('dayOfWeek').equals(dayOfWeek);
+    }
+
+    positionBuilder.limit(10).
+
+        exec(function (err, mergedPositions) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.json(200, mergedPositions);
+        });
+
 };
 
 // Get a single mergedPosition

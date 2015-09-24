@@ -9,10 +9,6 @@ exports.index2 = function (req, res) {
         if (err) {
             return handleError(res, err);
         }
-        console.log("got it");
-
-        console.log(simulationGroups2);
-
         return res.json(200, simulationGroups2);
     });
 };
