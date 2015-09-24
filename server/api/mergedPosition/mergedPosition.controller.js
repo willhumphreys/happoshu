@@ -5,7 +5,7 @@ var MergedPosition = require('./mergedPosition.model');
 
 // Get list of mergedPositions
 exports.index = function (req, res) {
-    MergedPosition.find({'Winners': {$gt: 0}}, function (err, mergedPositions) {
+    MergedPosition.find({'Winners': {$gt: 5}}, function (err, mergedPositions) {
         if (err) {
             return handleError(res, err);
         }
