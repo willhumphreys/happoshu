@@ -1,11 +1,11 @@
 <p>Merged positions</p>
 <div class="col-md-12" ng-controller="MergedPositionCtrl">
     <form name="myForm">
-        <select name="singleSelect" ng-model="searchOptions.selected">
-            <option value="option-1">Winners</option>
-            <option value="option-2">Losers</option>
+        <select name="singleSelect" ng-model="searchOptions.contract">
+            <option value="SPX">SPX</option>
+            <option value="EURUSD">EURUSD</option>
         </select><br>
-        equal <input ng-model="searchOptions.value"/><br/>
+        <!--equal <input ng-model="searchOptions.value"/><br/>-->
         <input type="submit" ng-click="update(searchOptions)" value="Filter"/>
     </form>
     <div ui-grid="gridOptions2" class="grid" ui-grid-auto-resize></div>
