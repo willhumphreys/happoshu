@@ -1,4 +1,12 @@
-<p><a href="/">Home</a> Merged positions</p>
+<p>Merged positions</p>
 <div class="col-md-12" ng-controller="MergedPositionCtrl">
+    <form name="myForm">
+        <select name="singleSelect" ng-model="searchOptions.selected">
+            <option value="option-1">Winners</option>
+            <option value="option-2">Losers</option>
+        </select><br>
+        equal <input ng-model="searchOptions.value"/><br/>
+        <input type="submit" ng-click="update(searchOptions)" value="Filter"/>
+    </form>
     <div ui-grid="gridOptions2" class="grid" ui-grid-auto-resize></div>
 </div>

@@ -120,11 +120,15 @@ angular.module('happoshuApp')
 
         };
 
+        $scope.update = function (searchOptions) {
+            console.log(searchOptions);
+            MergedPositionService.getMergedPositions(searchOptions).then(function (dataResponse) {
 
-        MergedPositionService.getMergedPositions().then(function (dataResponse) {
+                console.log("Controller getting merged positions");
 
-            console.log("Controller getting merged positions");
+                $scope.gridOptions2.data = dataResponse.data;
+            })
+        };
 
-            $scope.gridOptions2.data = dataResponse.data;
-        });
+
     });
