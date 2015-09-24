@@ -24,7 +24,7 @@ exports.index = function (req, res) {
         positionBuilder = positionBuilder.where('contract').equals(contract);
     }
 
-    positionBuilder.limit(10).
+    positionBuilder.
 
         exec(function (err, mergedPositions) {
             if (err) {
