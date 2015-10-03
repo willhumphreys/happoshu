@@ -20,8 +20,9 @@ exports.index = function (req, res) {
     var positionBuilder = MergedPosition.
         find().where('Winners').gt(5);
     if (contract != undefined) {
-        console.log("Here I am");
-        positionBuilder = positionBuilder.where('contract').equals(contract);
+        console.log("Here I am " + contract);
+        // positionBuilder = positionBuilder.where('contract').equals(contract);
+        positionBuilder = positionBuilder.where('options.name').equals(contract);
     }
 
     positionBuilder.
@@ -30,6 +31,7 @@ exports.index = function (req, res) {
             if (err) {
                 return handleError(res, err);
             }
+            console.log("Finished mergedPosition query");
             return res.json(200, mergedPositions);
         });
 

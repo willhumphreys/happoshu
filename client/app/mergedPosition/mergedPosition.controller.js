@@ -42,6 +42,7 @@ angular.module('happoshuApp')
                     displayName: 'Offset'
                 },
                 {field: 'time', width: '5%', maxWidth: 200, minWidth: 90},
+                {field: 'monthOfYear', width: '5%', maxWidth: 200, minWidth: 90},
                 {
                     field: 'WinnerLoserRatio',
                     cellFilter: 'number: 2',
