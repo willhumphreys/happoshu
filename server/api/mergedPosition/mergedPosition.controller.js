@@ -5,28 +5,39 @@ var MergedPosition = require('./mergedPosition.model');
 
 // Get list of mergedPositions
 exports.index = function (req, res) {
-    var contract = req.query.contract;
+
+    var eurusd = req.query.EURUSD;
+    console.log("eurusd " + eurusd);
+    var positionBuilder = MergedPosition.find().where('Winners').gt(5);
+
+    var options = [];
+
+    if (eurusd == "true") {
+        console.log("Here I am eurusd" + eurusd);
+        options.push("EURUSD");
+    }
+
+    var spx = req.query.SPX;
+    console.log("spx " + spx);
+    if (spx == "true") {
+        console.log("Here I am spx" + spx);
+        options.push("SPX");
+    }
 
 
-    ////MergedPosition.find({'Winners': {$gt: 5}}, function (err, mergedPositions) {
-    //MergedPosition.find({$and: [ { Winners: { $gt: 5 } }, { dayOfWeek: { $eq: dayOfWeek } } ]}, function (err, mergedPositions) {
-    //    if (err) {
-    //        return handleError(res, err);
-    //    }
-    //    return res.json(200, mergedPositions);
-    //});
+    var sma90 = req.query.sma90;
+    console.log("sma90 " + sma90);
+    if (sma90 == "true") {
+        console.log("Here I am sma90" + sma90);
+        options.push("SMA90");
+    }
 
-
-    var positionBuilder = MergedPosition.
-        find().where('Winners').gt(5);
-    if (contract != undefined) {
-        console.log("Here I am " + contract);
-        // positionBuilder = positionBuilder.where('contract').equals(contract);
-        positionBuilder = positionBuilder.where('options.name').equals(contract);
+    if (options.length > 0) {
+        console.log("options is" + options);
+        positionBuilder = positionBuilder.where('options.name').all(options);
     }
 
     positionBuilder.
-
         exec(function (err, mergedPositions) {
             if (err) {
                 return handleError(res, err);

@@ -2,15 +2,14 @@
 <div class="col-md-12" ng-controller="MergedPositionCtrl">
     <form name="myForm">
         <label>SPX:
-            <input type="checkbox" ng-model="searchOptions.spx">
+            <input type="checkbox" ng-model="searchOptions.SPX">
         </label><br/>
         <label>EURUSD:
-            <input type="checkbox" ng-model="searchOptions.eurusd">
+            <input type="checkbox" ng-model="searchOptions.EURUSD">
         </label><br/>
-        <label>90SMA:
+        <label>SMA90:
             <input type="checkbox" ng-model="searchOptions.sma90">
         </label><br/>
-        <!--equal <input ng-model="searchOptions.value"/><br/>-->
         <input type="submit" ng-click="update(searchOptions)" value="Filter"/>
     </form>
     <div ui-grid="gridOptions2" class="grid" ui-grid-auto-resize></div>
