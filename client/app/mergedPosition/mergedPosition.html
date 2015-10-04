@@ -1,15 +1,59 @@
 <p>Merged positions</p>
 <div class="col-md-12" ng-controller="MergedPositionCtrl">
     <form name="myForm">
-        <label>SPX:
-            <input type="checkbox" ng-model="searchOptions.SPX">
-        </label><br/>
-        <label>EURUSD:
-            <input type="checkbox" ng-model="searchOptions.EURUSD">
-        </label><br/>
-        <label>SMA90:
-            <input type="checkbox" ng-model="searchOptions.sma90">
-        </label><br/>
+        <!--<label>SPX:-->
+        <!--<input type="checkbox" ng-model="searchOptions.SPX">-->
+        <!--</label><br/>-->
+        <!--<label>EURUSD:-->
+        <!--<input type="checkbox" ng-model="searchOptions.EURUSD">-->
+        <!--</label><br/>-->
+        <!--<label>SMA90:-->
+        <!--<input type="checkbox" ng-model="searchOptions.sma90">-->
+        <!--</label><br/>-->
+
+        <label>SellGap: <input type="checkbox" ng-model="searchOptions.SellGap"></label><br/>
+        <label>Sell: <input type="checkbox" ng-model="searchOptions.Sell"></label><br/>
+        <label>SellWithStops: <input type="checkbox" ng-model="searchOptions.SellWithStops"></label><br/>
+        <label>BuyGap: <input type="checkbox" ng-model="searchOptions.BuyGap"></label><br/>
+        <label>200Slippage: <input type="checkbox" ng-model="searchOptions.200Slippage"></label><br/>
+        <label>EurUSDSlippage: <input type="checkbox" ng-model="searchOptions.EurUSDSlippage"></label><br/>
+        <label>SellGapRange: <input type="checkbox" ng-model="searchOptions.SellGapRange"></label><br/>
+        <label>BuyGapRange: <input type="checkbox" ng-model="searchOptions.BuyGapRange"></label><br/>
+        <label>TradeL14ScalesScenarioL14: <input type="checkbox"
+                                                 ng-model="searchOptions.TradeL14ScalesScenarioL14"></label><br/>
+        <label>TradeL14ScenarioL14: <input type="checkbox" ng-model="searchOptions.TradeL14ScenarioL14"></label><br/>
+        <label>TradeL14ScenarioL365: <input type="checkbox" ng-model="searchOptions.TradeL14ScenarioL365"></label><br/>
+        <label>SPX: <input type="checkbox" ng-model="searchOptions.SPX"></label><br/>
+        <label>EURUSD: <input type="checkbox" ng-model="searchOptions.EURUSD"></label><br/>
+        <label>SBK15: <input type="checkbox" ng-model="searchOptions.SBK15"></label><br/>
+        <label>Buy: <input type="checkbox" ng-model="searchOptions.Buy"></label><br/>
+        <label>BuyWithStops: <input type="checkbox" ng-model="searchOptions.BuyWithStops"></label><br/>
+        <label>CrossOver: <input type="checkbox" ng-model="searchOptions.CrossOver"></label><br/>
+        <label>BuyCross: <input type="checkbox" ng-model="searchOptions.BuyCross"></label><br/>
+        <label>CrossOver: <input type="checkbox" ng-model="searchOptions.CrossOver"></label><br/>
+        <label>Above1SD: <input type="checkbox" ng-model="searchOptions.Above1SD"></label><br/>
+        <label>Above2SD: <input type="checkbox" ng-model="searchOptions.Above2SD"></label><br/>
+        <label>Above3SD: <input type="checkbox" ng-model="searchOptions.Above3SD"></label><br/>
+        <label>Below1SD: <input type="checkbox" ng-model="searchOptions.Below1SD"></label><br/>
+        <label>Below2SD: <input type="checkbox" ng-model="searchOptions.Below2SD"></label><br/>
+        <label>Below3SD: <input type="checkbox" ng-model="searchOptions.Below3SD"></label><br/>
+        <label>MondayToFriday: <input type="checkbox" ng-model="searchOptions.MondayToFriday"></label><br/>
+        <label>Monday: <input type="checkbox" ng-model="searchOptions.Monday"></label><br/>
+        <label>Tuesday: <input type="checkbox" ng-model="searchOptions.Tuesday"></label><br/>
+        <label>Wednesday: <input type="checkbox" ng-model="searchOptions.Wednesday"></label><br/>
+        <label>Thursday: <input type="checkbox" ng-model="searchOptions.Thursday"></label><br/>
+        <label>Friday: <input type="checkbox" ng-model="searchOptions.Friday"></label><br/>
+        <label>Sunday: <input type="checkbox" ng-model="searchOptions.Sunday"></label><br/>
+        <label>TrailingStop0TO5000: <input type="checkbox" ng-model="searchOptions.TrailingStop0TO5000"></label><br/>
+        <label>TrailingStop4000TO6000: <input type="checkbox"
+                                              ng-model="searchOptions.TrailingStop4000TO6000"></label><br/>
+        <label>TrailingStop0TO20000: <input type="checkbox" ng-model="searchOptions.TrailingStop0TO20000"></label><br/>
+        <label>MonthOfYear: <input type="checkbox" ng-model="searchOptions.MonthOfYear"></label><br/>
+        <label>AllDaysInMonth: <input type="checkbox" ng-model="searchOptions.AllDaysInMonth"></label><br/>
+        <label>MondayToFriday: <input type="checkbox" ng-model="searchOptions.MondayToFriday"></label><br/>
+        <label>EveningSession: <input type="checkbox" ng-model="searchOptions.EveningSession"></label><br/>
+        <label>NightSession: <input type="checkbox" ng-model="searchOptions.NightSession"></label><br/>
+
         <input type="submit" ng-click="update(searchOptions)" value="Filter"/>
     </form>
     <div ui-grid="gridOptions2" class="grid" ui-grid-auto-resize></div>
