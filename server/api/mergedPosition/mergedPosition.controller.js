@@ -6,31 +6,19 @@ var MergedPosition = require('./mergedPosition.model');
 // Get list of mergedPositions
 exports.index = function (req, res) {
 
-    var eurusd = req.query.EURUSD;
-    console.log("eurusd " + eurusd);
-    var positionBuilder = MergedPosition.find().where('Winners').gt(5);
-
     var options = [];
 
-    if (eurusd == "true") {
-        console.log("Here I am eurusd" + eurusd);
-        options.push("EURUSD");
+    for (var property in req.query) {
+        if (req.query.hasOwnProperty(property)) {
+            var value = req.query[property];
+            console.log(property + " " + value);
+            if (value == "true") {
+                options.push(property);
+            }
+        }
     }
 
-    var spx = req.query.SPX;
-    console.log("spx " + spx);
-    if (spx == "true") {
-        console.log("Here I am spx" + spx);
-        options.push("SPX");
-    }
-
-
-    var sma90 = req.query.sma90;
-    console.log("sma90 " + sma90);
-    if (sma90 == "true") {
-        console.log("Here I am sma90" + sma90);
-        options.push("SMA90");
-    }
+    var positionBuilder = MergedPosition.find().where('Winners').gt(5);
 
     if (options.length > 0) {
         console.log("options is" + options);
@@ -45,7 +33,6 @@ exports.index = function (req, res) {
             console.log("Finished mergedPosition query");
             return res.json(200, mergedPositions);
         });
-
 };
 
 // Get a single mergedPosition
