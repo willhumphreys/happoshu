@@ -54,6 +54,18 @@
         <label>EveningSession: <input type="checkbox" ng-model="searchOptions.EveningSession"></label><br/>
         <label>NightSession: <input type="checkbox" ng-model="searchOptions.NightSession"></label><br/>
 
+
+        <label>SMA50Above <input type="checkbox" ng-model="searchOptions.SMA50Above"></label><br/>
+        <label>SMA60Above <input type="checkbox" ng-model="searchOptions.SMA60Above"></label><br/>
+        <label>SMA70Above <input type="checkbox" ng-model="searchOptions.SMA70Above"></label><br/>
+        <label>SMA80Above <input type="checkbox" ng-model="searchOptions.SMA80Above"></label><br/>
+        <label>SMA90Above <input type="checkbox" ng-model="searchOptions.SMA90Above"></label><br/>
+        <label>SMA50Below <input type="checkbox" ng-model="searchOptions.SMA50Below"></label><br/>
+        <label>SMA60Below <input type="checkbox" ng-model="searchOptions.SMA60Below"></label><br/>
+        <label>SMA70Below <input type="checkbox" ng-model="searchOptions.SMA70Below"></label><br/>
+        <label>SMA80Below <input type="checkbox" ng-model="searchOptions.SMA80Below"></label><br/>
+        <label>SMA90Below <input type="checkbox" ng-model="searchOptions.SMA90Below"></label><br/>
+
         <input type="submit" ng-click="update(searchOptions)" value="Filter"/>
     </form>
     <div ui-grid="gridOptions2" class="grid" ui-grid-auto-resize></div>
