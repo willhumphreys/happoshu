@@ -4,13 +4,13 @@ angular.module('happoshuApp')
     .controller('MergedPositionCtrl', function ($scope, MergedPositionService, uiGridConstants) {
         $scope.columns =
             [
-                {field: 'runName'},
-                {field: 'name', width: '5%', maxWidth: 200, minWidth: 100},
-                {field: 'Profit', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
+                {field: 'runName', width: '15%'},
+                {field: 'name', width: '7%', maxWidth: 200, minWidth: 100},
+                {field: 'Profit', type: 'number', width: '5%', maxWidth: 200, minWidth: 70},
 
                 // multiple filters
                 {
-                    field: 'Winners', type: 'number', width: '5%', maxWidth: 200, minWidth: 90, filters: [
+                    field: 'Winners', type: 'number', width: '3%', maxWidth: 200, minWidth: 70, filters: [
                     {
                         condition: uiGridConstants.filter.GREATER_THAN,
                         placeholder: 'greater than'
@@ -21,9 +21,9 @@ angular.module('happoshuApp')
                     }]
 
                 },
-                {field: 'Losers', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
+                {field: 'Losers', type: 'number', width: '3%', maxWidth: 200, minWidth: 70},
                 {
-                    field: 'ProfitPerTrade', type: 'number', width: '5%', maxWidth: 250, minWidth: 190,
+                    field: 'ProfitPerTrade', type: 'number', width: '5%', maxWidth: 250, minWidth: 70,
                     cellFilter: 'number: 2',
                     sort: {
                         direction: uiGridConstants.DESC,
@@ -31,34 +31,34 @@ angular.module('happoshuApp')
                     }
 
                 },
-                {field: 'Stop', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
-                {field: 'TrailingStop', type: 'number', width: '5%', maxWidth: 200, minWidth: 90},
+                {field: 'Stop', type: 'number', width: '3%', maxWidth: 200, minWidth: 50},
+                {field: 'TrailingStop', type: 'number', width: '3%', maxWidth: 200, minWidth: 70},
                 {
                     field: 'TickOffset',
                     type: 'number',
                     width: '5%',
                     maxWidth: 200,
-                    minWidth: 90,
+                    minWidth: 70,
                     displayName: 'Offset'
                 },
-                {field: 'time', width: '5%', maxWidth: 200, minWidth: 90},
-                {field: 'monthOfYear', width: '5%', maxWidth: 200, minWidth: 90},
+                {field: 'time', width: '5%', maxWidth: 200, minWidth: 70, cellFilter: 'date:\'HH:mm\''},
+                {field: 'monthOfYear', width: '5%', maxWidth: 200, minWidth: 70},
                 {
                     field: 'WinnerLoserRatio',
                     cellFilter: 'number: 2',
                     type: 'number',
-                    width: '5%',
+                    width: '3%',
                     maxWidth: 200,
-                    minWidth: 90,
+                    minWidth: 50,
                     displayName: 'WLR'
                 },
 
-                {field: 'dayOfWeek', width: '5%', maxWidth: 200, minWidth: 90, displayName: 'DOW'},
+                {field: 'dayOfWeek', width: '5%', maxWidth: 200, minWidth: 70, displayName: 'DOW'},
                 {
                     field: 'WinningSimulations',
                     width: '5%',
                     maxWidth: 200,
-                    minWidth: 90,
+                    minWidth: 70,
                     displayName: 'Winners S',
                     cellFilter: 'number: 2'
                 },
@@ -66,47 +66,47 @@ angular.module('happoshuApp')
                     field: 'LosingSimulations',
                     width: '5%',
                     maxWidth: 200,
-                    minWidth: 90,
+                    minWidth: 70,
                     displayName: 'Losers S',
                     cellFilter: 'number: 2'
                 },
                 {
                     field: 'TotalSimulations',
-                    width: '5%',
+                    width: '3%',
                     maxWidth: 200,
-                    minWidth: 90,
+                    minWidth: 70,
                     displayName: 'Total S',
                     cellFilter: 'number: 2'
                 },
                 {
                     field: 'WinnerLoserRatio',
-                    width: '5%',
+                    width: '3%',
                     maxWidth: 200,
-                    minWidth: 90,
+                    minWidth: 50,
                     displayName: 'WLR',
                     cellFilter: 'number: 2'
                 },
                 {
                     field: 'LoserWinnerRatio',
-                    width: '5%',
+                    width: '3%',
                     maxWidth: 200,
-                    minWidth: 90,
+                    minWidth: 50,
                     displayName: 'LWR',
                     cellFilter: 'number: 2'
                 },
                 {
                     field: 'WinnerLoserRationSimulations',
-                    width: '5%',
+                    width: '3%',
                     maxWidth: 200,
-                    minWidth: 90,
+                    minWidth: 50,
                     displayName: 'WLRS',
                     cellFilter: 'number: 2'
                 },
                 {
                     field: 'LoserWinnerRatioSimulations',
-                    width: '5%',
+                    width: '3%',
                     maxWidth: 200,
-                    minWidth: 90,
+                    minWidth: 50,
                     displayName: 'LWRS',
                     cellFilter: 'number: 2'
                 }
