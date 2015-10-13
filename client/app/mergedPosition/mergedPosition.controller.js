@@ -4,7 +4,7 @@ angular.module('happoshuApp')
     .controller('MergedPositionCtrl', function ($scope, MergedPositionService, uiGridConstants) {
         $scope.columns =
             [
-                {field: 'runName', width: '15%'},
+                {field: 'runName', width: '15%', cellTooltip: true},
                 {field: 'name', width: '7%', maxWidth: 200, minWidth: 100},
                 {field: 'Profit', type: 'number', width: '5%', maxWidth: 200, minWidth: 70},
 
