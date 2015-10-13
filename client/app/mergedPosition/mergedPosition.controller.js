@@ -4,13 +4,19 @@ angular.module('happoshuApp')
     .controller('MergedPositionCtrl', function ($scope, MergedPositionService, uiGridConstants) {
         $scope.columns =
             [
-                {field: 'runName', width: '15%', cellTooltip: true},
-                {field: 'name', width: '7%', maxWidth: 200, minWidth: 100},
-                {field: 'Profit', type: 'number', width: '5%', maxWidth: 200, minWidth: 70},
+                {field: 'runName', width: '19%', cellTooltip: true, headerTooltip: true},
+                {field: 'name', width: '7%', maxWidth: 200, minWidth: 100, headerTooltip: true},
+                {field: 'Profit', type: 'number', width: '5%', maxWidth: 200, minWidth: 70, headerTooltip: true},
 
                 // multiple filters
                 {
-                    field: 'Winners', type: 'number', width: '3%', maxWidth: 200, minWidth: 70, filters: [
+                    field: 'Winners',
+                    type: 'number',
+                    width: '3%',
+                    headerTooltip: true,
+                    maxWidth: 200,
+                    minWidth: 70,
+                    filters: [
                     {
                         condition: uiGridConstants.filter.GREATER_THAN,
                         placeholder: 'greater than'
@@ -21,9 +27,14 @@ angular.module('happoshuApp')
                     }]
 
                 },
-                {field: 'Losers', type: 'number', width: '3%', maxWidth: 200, minWidth: 70},
+                {field: 'Losers', type: 'number', width: '3%', maxWidth: 200, minWidth: 70, headerTooltip: true},
                 {
-                    field: 'ProfitPerTrade', type: 'number', width: '5%', maxWidth: 250, minWidth: 70,
+                    field: 'ProfitPerTrade',
+                    type: 'number',
+                    width: '5%',
+                    headerTooltip: true,
+                    maxWidth: 250,
+                    minWidth: 70,
                     cellFilter: 'number: 2',
                     sort: {
                         direction: uiGridConstants.DESC,
@@ -31,31 +42,37 @@ angular.module('happoshuApp')
                     }
 
                 },
-                {field: 'Stop', type: 'number', width: '3%', maxWidth: 200, minWidth: 50},
-                {field: 'TrailingStop', type: 'number', width: '3%', maxWidth: 200, minWidth: 70},
+                {field: 'Stop', type: 'number', width: '3%', maxWidth: 200, minWidth: 50, headerTooltip: true},
+                {field: 'TrailingStop', type: 'number', width: '3%', maxWidth: 200, minWidth: 70, headerTooltip: true},
                 {
                     field: 'TickOffset',
                     type: 'number',
-                    width: '5%',
+                    width: '5%', headerTooltip: true,
                     maxWidth: 200,
                     minWidth: 70,
                     displayName: 'Offset'
                 },
-                {field: 'time', width: '5%', maxWidth: 200, minWidth: 70, cellFilter: 'date:\'HH:mm\''},
-                {field: 'monthOfYear', width: '5%', maxWidth: 200, minWidth: 70},
                 {
-                    field: 'WinnerLoserRatio',
-                    cellFilter: 'number: 2',
-                    type: 'number',
-                    width: '3%',
+                    field: 'time',
+                    width: '5%',
                     maxWidth: 200,
-                    minWidth: 50,
-                    displayName: 'WLR'
+                    minWidth: 70,
+                    headerTooltip: 'Time of Day',
+                    cellFilter: 'date:\'HH:mm\''
                 },
+                {field: 'monthOfYear', width: '5%', maxWidth: 200, minWidth: 70, headerTooltip: 'Month of Year'},
 
-                {field: 'dayOfWeek', width: '5%', maxWidth: 200, minWidth: 70, displayName: 'DOW'},
                 {
-                    field: 'WinningSimulations',
+                    field: 'dayOfWeek',
+                    width: '5%',
+                    maxWidth: 200,
+                    minWidth: 70,
+                    headerTooltip: 'Day of Week',
+                    displayName: 'DOW'
+                },
+                {
+                    field: 'WinningSimulations', headerTooltip: 'Winning Simulations',
+
                     width: '5%',
                     maxWidth: 200,
                     minWidth: 70,
@@ -63,7 +80,7 @@ angular.module('happoshuApp')
                     cellFilter: 'number: 2'
                 },
                 {
-                    field: 'LosingSimulations',
+                    field: 'LosingSimulations', headerTooltip: 'Losing Simulations',
                     width: '5%',
                     maxWidth: 200,
                     minWidth: 70,
@@ -71,7 +88,7 @@ angular.module('happoshuApp')
                     cellFilter: 'number: 2'
                 },
                 {
-                    field: 'TotalSimulations',
+                    field: 'TotalSimulations', headerTooltip: 'Total Simulations',
                     width: '3%',
                     maxWidth: 200,
                     minWidth: 70,
@@ -79,7 +96,7 @@ angular.module('happoshuApp')
                     cellFilter: 'number: 2'
                 },
                 {
-                    field: 'WinnerLoserRatio',
+                    field: 'WinnerLoserRatio', headerTooltip: 'Winner Loser Ratio',
                     width: '3%',
                     maxWidth: 200,
                     minWidth: 50,
@@ -87,7 +104,7 @@ angular.module('happoshuApp')
                     cellFilter: 'number: 2'
                 },
                 {
-                    field: 'LoserWinnerRatio',
+                    field: 'LoserWinnerRatio', headerTooltip: 'Loser Winner Ratio',
                     width: '3%',
                     maxWidth: 200,
                     minWidth: 50,
@@ -95,16 +112,16 @@ angular.module('happoshuApp')
                     cellFilter: 'number: 2'
                 },
                 {
-                    field: 'WinnerLoserRationSimulations',
-                    width: '3%',
+                    field: 'WinnerLoserRationSimulations', headerTooltip: 'Winner Loser Ratio Simulations',
+                    width: '4%',
                     maxWidth: 200,
                     minWidth: 50,
                     displayName: 'WLRS',
                     cellFilter: 'number: 2'
                 },
                 {
-                    field: 'LoserWinnerRatioSimulations',
-                    width: '3%',
+                    field: 'LoserWinnerRatioSimulations', headerTooltip: 'Loser Winner Ratio Simulations',
+                    width: '4%',
                     maxWidth: 200,
                     minWidth: 50,
                     displayName: 'LWRS',
