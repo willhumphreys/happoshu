@@ -6,7 +6,52 @@ angular.module('happoshuApp')
             [
                 {field: 'runName', width: '19%', cellTooltip: true, headerTooltip: true},
                 {field: 'name', width: '7%', maxWidth: 200, minWidth: 100, headerTooltip: true},
-                {field: 'Profit', type: 'number', width: '5%', maxWidth: 200, minWidth: 70, headerTooltip: true},
+
+                {
+                    field: 'ProfitPerTrade',
+                    type: 'number',
+                    width: '5%',
+                    headerTooltip: true,
+                    maxWidth: 250,
+                    minWidth: 70,
+                    cellFilter: 'number: 2',
+                    sort: {
+                        direction: uiGridConstants.DESC,
+                        priority: 1
+                    }
+
+                },
+
+                {
+                    field: 'dayOfWeek',
+                    width: '5%',
+                    maxWidth: 200,
+                    minWidth: 70,
+                    headerTooltip: 'Day of Week',
+                    displayName: 'DOW'
+                },
+
+                {
+                    field: 'time',
+                    width: '5%',
+                    maxWidth: 200,
+                    minWidth: 70,
+                    headerTooltip: 'Time of Day',
+                    cellFilter: 'date:\'HH:mm\''
+                },
+
+                {field: 'Stop', type: 'number', width: '3%', maxWidth: 200, minWidth: 50, headerTooltip: true},
+
+                {
+                    field: 'TickOffset',
+                    type: 'number',
+                    width: '5%', headerTooltip: true,
+                    maxWidth: 200,
+                    minWidth: 70,
+                    displayName: 'Offset'
+                },
+
+                {field: 'TrailingStop', type: 'number', width: '3%', maxWidth: 200, minWidth: 70, headerTooltip: true},
 
                 // multiple filters
                 {
@@ -28,48 +73,12 @@ angular.module('happoshuApp')
 
                 },
                 {field: 'Losers', type: 'number', width: '3%', maxWidth: 200, minWidth: 70, headerTooltip: true},
-                {
-                    field: 'ProfitPerTrade',
-                    type: 'number',
-                    width: '5%',
-                    headerTooltip: true,
-                    maxWidth: 250,
-                    minWidth: 70,
-                    cellFilter: 'number: 2',
-                    sort: {
-                        direction: uiGridConstants.DESC,
-                        priority: 1
-                    }
 
-                },
-                {field: 'Stop', type: 'number', width: '3%', maxWidth: 200, minWidth: 50, headerTooltip: true},
-                {field: 'TrailingStop', type: 'number', width: '3%', maxWidth: 200, minWidth: 70, headerTooltip: true},
-                {
-                    field: 'TickOffset',
-                    type: 'number',
-                    width: '5%', headerTooltip: true,
-                    maxWidth: 200,
-                    minWidth: 70,
-                    displayName: 'Offset'
-                },
-                {
-                    field: 'time',
-                    width: '5%',
-                    maxWidth: 200,
-                    minWidth: 70,
-                    headerTooltip: 'Time of Day',
-                    cellFilter: 'date:\'HH:mm\''
-                },
+
                 {field: 'monthOfYear', width: '5%', maxWidth: 200, minWidth: 70, headerTooltip: 'Month of Year'},
 
-                {
-                    field: 'dayOfWeek',
-                    width: '5%',
-                    maxWidth: 200,
-                    minWidth: 70,
-                    headerTooltip: 'Day of Week',
-                    displayName: 'DOW'
-                },
+
+                {field: 'Profit', type: 'number', width: '5%', maxWidth: 200, minWidth: 70, headerTooltip: true},
                 {
                     field: 'WinningSimulations', headerTooltip: 'Winning Simulations',
 
