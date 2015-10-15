@@ -3,6 +3,17 @@
 angular.module('happoshuApp')
     .controller('MergedPositionCtrl', function ($scope, MergedPositionService, uiGridConstants) {
 
+
+        // define some random object
+        $scope.bigData = {};
+
+        $scope.bigData.breakfast = false;
+        $scope.bigData.lunch = false;
+        $scope.bigData.dinner = false;
+
+        // COLLAPSE =====================
+        $scope.isCollapsed = false;
+
         $scope.searchStatus = 'Waiting';
 
         $scope.columns =
@@ -17,11 +28,11 @@ angular.module('happoshuApp')
                     headerTooltip: true,
                     maxWidth: 250,
                     minWidth: 70,
-                    cellFilter: 'number: 2',
-                    sort: {
-                        direction: uiGridConstants.DESC,
-                        priority: 1
-                    }
+                    cellFilter: 'number: 2'
+                    //sort: {
+                    //    direction: uiGridConstants.DESC,
+                    //    priority: 1
+                    //}
 
                 },
 

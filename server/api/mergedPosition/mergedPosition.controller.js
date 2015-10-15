@@ -25,6 +25,8 @@ exports.index = function (req, res) {
         positionBuilder = positionBuilder.where('options.name').all(options);
     }
 
+    positionBuilder = positionBuilder.sort({WinnerLoserRationSimulations: -1, ProfitPerTrade: -1})
+
     positionBuilder.
         exec(function (err, mergedPositions) {
             if (err) {
