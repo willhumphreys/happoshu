@@ -18,7 +18,7 @@ angular.module('happoshuApp')
 
         $scope.columns =
             [
-                {field: 'runName', width: '19%', cellTooltip: true, headerTooltip: true},
+                {field: 'runName', width: '18%', cellTooltip: true, headerTooltip: true},
                 {field: 'name', width: '7%', maxWidth: 200, minWidth: 100, headerTooltip: true},
 
                 {
@@ -56,9 +56,9 @@ angular.module('happoshuApp')
 
                 {
                     field: 'TradeLength',
-                    width: '5%',
+                    width: '3%',
                     maxWidth: 200,
-                    minWidth: 70,
+                    minWidth: 40,
                     headerTooltip: 'Trade Length',
                     displayName: 'Trade Length'
                 },
@@ -83,7 +83,7 @@ angular.module('happoshuApp')
                     width: '3%',
                     headerTooltip: true,
                     maxWidth: 200,
-                    minWidth: 70,
+                    minWidth: 40,
                     filters: [
                     {
                         condition: uiGridConstants.filter.GREATER_THAN,
@@ -95,7 +95,7 @@ angular.module('happoshuApp')
                     }]
 
                 },
-                {field: 'Losers', type: 'number', width: '3%', maxWidth: 200, minWidth: 70, headerTooltip: true},
+                {field: 'Losers', type: 'number', width: '3%', maxWidth: 200, minWidth: 40, headerTooltip: true},
 
 
                 {field: 'monthOfYear', width: '5%', maxWidth: 200, minWidth: 70, headerTooltip: 'Month of Year'},
