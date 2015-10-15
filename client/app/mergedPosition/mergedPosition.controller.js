@@ -2,6 +2,9 @@
 
 angular.module('happoshuApp')
     .controller('MergedPositionCtrl', function ($scope, MergedPositionService, uiGridConstants) {
+
+        $scope.searchStatus = 'Waiting';
+
         $scope.columns =
             [
                 {field: 'runName', width: '19%', cellTooltip: true, headerTooltip: true},
@@ -157,12 +160,16 @@ angular.module('happoshuApp')
         };
 
         $scope.update = function (searchOptions) {
+
+            $scope.searchStatus = 'Searching';
             console.log(searchOptions);
             MergedPositionService.getMergedPositions(searchOptions).then(function (dataResponse) {
 
                 console.log("Controller getting merged positions");
 
+
                 $scope.gridOptions2.data = dataResponse.data;
+                $scope.searchStatus = 'Search Complete';
             })
         };
 
