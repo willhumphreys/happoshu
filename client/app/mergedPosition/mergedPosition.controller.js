@@ -40,6 +40,15 @@ angular.module('happoshuApp')
                     cellFilter: 'date:\'HH:mm\''
                 },
 
+                {
+                    field: 'TradeLength',
+                    width: '5%',
+                    maxWidth: 200,
+                    minWidth: 70,
+                    headerTooltip: 'Trade Length',
+                    displayName: 'Trade Length'
+                },
+
                 {field: 'Stop', type: 'number', width: '3%', maxWidth: 200, minWidth: 50, headerTooltip: true},
 
                 {
