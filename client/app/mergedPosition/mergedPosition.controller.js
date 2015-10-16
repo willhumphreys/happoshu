@@ -3,7 +3,6 @@
 angular.module('happoshuApp')
     .controller('MergedPositionCtrl', function ($scope, MergedPositionService, uiGridConstants) {
 
-
         // define some random object
         $scope.bigData = {};
 
@@ -183,6 +182,4 @@ angular.module('happoshuApp')
                 $scope.searchStatus = 'Search Complete';
             })
         };
-
-
     });
