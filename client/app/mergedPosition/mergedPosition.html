@@ -1,4 +1,22 @@
-<p><a href="/">Home</a>Merged positions</p>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Matcha</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="simulationGroupFiles">Simulation Group Files</a></li>
+                <li><a href="simulationGroups">Simulation Groups From Mongo</a></li>
+                <li><a href="executionStats">Execution Stats Mongo</a></li>
+                <li class="active"><a href="mergedPosition">Merged Positions<span class="sr-only">(current)</span></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div class="col-md-12 row no-gutter" ng-controller="MergedPositionCtrl">
     <a href="#" class="btn btn-primary" ng-click="isCollapsed = !isCollapsed">
         Toggle Options
