@@ -4,6 +4,8 @@ angular.module('happoshuApp')
     .controller('ExecutionStatsCtrl', function ($scope, ExecutionStatsService) {
         $scope.message = 'Hello';
 
+        $scope.searchStatus = 'Waiting';
+
         $scope.columns =
             [
                 {field: '_id', with: '5%', maxWidth: 200, minWidth: 100},
@@ -26,10 +28,18 @@ angular.module('happoshuApp')
 
         };
 
-        ExecutionStatsService.getExecutionStats().then(function (dataResponse) {
 
-            $scope.results2 = dataResponse;
-            $scope.gridOptions2.data = dataResponse.data;
-        });
+        $scope.update = function (searchOptions) {
+
+            $scope.searchStatus = 'Searching';
+            console.log(searchOptions);
+            ExecutionStatsService.getExecutionStats().then(function (dataResponse) {
+
+                $scope.results2 = dataResponse;
+                $scope.gridOptions2.data = dataResponse.data;
+                $scope.searchStatus = 'Search Complete';
+            });
+
+        };
 
     });
