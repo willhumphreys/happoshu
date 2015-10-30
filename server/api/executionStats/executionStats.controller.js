@@ -10,7 +10,7 @@ exports.index = function (req, res) {
             return handleError(res, err);
         }
         return res.json(200, executionStatss);
-    });
+    }).sort({created: -1});
 };
 
 // Get a single executionStats

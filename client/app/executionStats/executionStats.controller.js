@@ -8,12 +8,12 @@ angular.module('happoshuApp')
             [
                 {field: '_id', with: '5%', maxWidth: 200, minWidth: 100},
                 {field: 'stage', width: '5%', maxWidth: 200, minWidth: 100},
-                {field: 'runName', width: '40%', maxWidth: 500, minWidth: 100},
-                {field: 'open', width: '5%', maxWidth: 250, minWidth: 150},
-                {field: 'close', width: '5%', maxWidth: 250, minWidth: 150},
+                {field: 'runName', width: '50%', maxWidth: 700, minWidth: 100},
+                {field: 'open', width: '5%', maxWidth: 250, minWidth: 200},
+                {field: 'close', width: '5%', maxWidth: 250, minWidth: 200},
                 {field: 'durationInSeconds', width: '5%', maxWidth: 200, minWidth: 100},
-                {field: 'durationInMillis', width: '5%', maxWidth: 200, minWidth: 100},
-                {field: 'created', width: '5%', maxWidth: 200, minWidth: 100}
+                {field: 'durationInMillis', width: '8%', maxWidth: 200, minWidth: 100},
+                {field: 'created', width: '5%', maxWidth: 200, minWidth: 200}
 
 
             ];
