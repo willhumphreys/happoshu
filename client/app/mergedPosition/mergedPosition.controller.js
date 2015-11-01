@@ -36,6 +36,16 @@ angular.module('happoshuApp')
                 },
 
                 {
+                    field: 'TickProfitPerTrade',
+                    type: 'number',
+                    width: '5%',
+                    headerTooltip: true,
+                    maxWidth: 250,
+                    minWidth: 70,
+                    cellFilter: 'number: 2'
+                },
+
+                {
                     field: 'dayOfWeek',
                     width: '5%',
                     maxWidth: 200,
@@ -84,14 +94,14 @@ angular.module('happoshuApp')
                     maxWidth: 200,
                     minWidth: 40,
                     filters: [
-                    {
-                        condition: uiGridConstants.filter.GREATER_THAN,
-                        placeholder: 'greater than'
-                    },
-                    {
-                        condition: uiGridConstants.filter.LESS_THAN,
-                        placeholder: 'less than'
-                    }]
+                        {
+                            condition: uiGridConstants.filter.GREATER_THAN,
+                            placeholder: 'greater than'
+                        },
+                        {
+                            condition: uiGridConstants.filter.LESS_THAN,
+                            placeholder: 'less than'
+                        }]
 
                 },
                 {field: 'Losers', type: 'number', width: '3%', maxWidth: 200, minWidth: 40, headerTooltip: true},
