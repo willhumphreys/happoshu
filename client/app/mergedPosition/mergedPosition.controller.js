@@ -36,6 +36,16 @@ angular.module('happoshuApp')
                 },
 
                 {
+                    field: 'RiskReward',
+                    type: 'number',
+                    width: '5%',
+                    headerTooltip: true,
+                    maxWidth: 250,
+                    minWidth: 70,
+                    cellFilter: 'number: 2'
+                },
+
+                {
                     field: 'TickProfitPerTrade',
                     type: 'number',
                     width: '5%',
