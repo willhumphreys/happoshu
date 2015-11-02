@@ -10,17 +10,28 @@ exports.index = function (req, res) {
 
     var minWinners = 5;
 
+    var dayOfWeekSpecified = false;
+
+    console.log("a" + dayOfWeekSpecified);
     for (var property in req.query) {
         if (req.query.hasOwnProperty(property)) {
             var value = req.query[property];
             console.log(property + " " + value);
-            if (value == "true") {
-                options.push(property);
-            }
+
 
             if (property == "minWinners") {
                 minWinners = value;
                 console.log("Setting min winners to " + value);
+            }
+
+            if (property == "dayOfWeek") {
+                console.log("what what");
+                dayOfWeekSpecified = value;
+            }
+
+            if (value == "true" && property != "dayOfWeek") {
+                console.log("not not");
+                options.push(property);
             }
 
         }
@@ -33,16 +44,22 @@ exports.index = function (req, res) {
         positionBuilder = positionBuilder.where('options.name').all(options);
     }
 
-    positionBuilder = positionBuilder.sort({WinnerLoserRationSimulations: -1, ProfitPerTrade: -1})
+    console.log("stupid" + dayOfWeekSpecified);
+    if (dayOfWeekSpecified === true) {
+        console.log("What are we here");
+        positionBuilder = positionBuilder.where('dayOfWeek').ne('Not Set');
+    }
+
+    positionBuilder = positionBuilder.sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1})
 
     positionBuilder.
-        exec(function (err, mergedPositions) {
-            if (err) {
-                return handleError(res, err);
-            }
-            console.log("Finished mergedPosition query");
-            return res.json(200, mergedPositions);
-        });
+    exec(function (err, mergedPositions) {
+        if (err) {
+            return handleError(res, err);
+        }
+        console.log("Finished mergedPosition query");
+        return res.json(200, mergedPositions);
+    });
 };
 
 // Get a single mergedPosition
