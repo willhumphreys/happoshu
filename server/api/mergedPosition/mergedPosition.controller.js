@@ -8,6 +8,8 @@ exports.index = function (req, res) {
 
     var options = [];
 
+    var minWinners = 5;
+
     for (var property in req.query) {
         if (req.query.hasOwnProperty(property)) {
             var value = req.query[property];
@@ -15,10 +17,16 @@ exports.index = function (req, res) {
             if (value == "true") {
                 options.push(property);
             }
+
+            if (property == "minWinners") {
+                minWinners = value;
+                console.log("Setting min winners to " + value);
+            }
+
         }
     }
 
-    var positionBuilder = MergedPosition.find().where('Winners').gt(5);
+    var positionBuilder = MergedPosition.find().where('Winners').gte(parseInt(minWinners));
 
     if (options.length > 0) {
         console.log("options is" + options);
