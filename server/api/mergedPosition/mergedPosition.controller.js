@@ -12,28 +12,23 @@ exports.index = function (req, res) {
 
     var dayOfWeekSpecified = false;
 
-    console.log("a" + dayOfWeekSpecified);
     for (var property in req.query) {
         if (req.query.hasOwnProperty(property)) {
             var value = req.query[property];
             console.log(property + " " + value);
-
 
             if (property == "minWinners") {
                 minWinners = value;
                 console.log("Setting min winners to " + value);
             }
 
-            if (property == "dayOfWeek") {
-                console.log("what what");
-                dayOfWeekSpecified = value;
+            if (property == "dayOfWeek" && value == "true") {
+                dayOfWeekSpecified = true;
             }
 
             if (value == "true" && property != "dayOfWeek") {
-                console.log("not not");
                 options.push(property);
             }
-
         }
     }
 
@@ -44,9 +39,8 @@ exports.index = function (req, res) {
         positionBuilder = positionBuilder.where('options.name').all(options);
     }
 
-    console.log("stupid" + dayOfWeekSpecified);
-    if (dayOfWeekSpecified === true) {
-        console.log("What are we here");
+    if (dayOfWeekSpecified == true) {
+        console.log("Why are we here");
         positionBuilder = positionBuilder.where('dayOfWeek').ne('Not Set');
     }
 
