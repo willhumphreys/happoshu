@@ -11,6 +11,9 @@ exports.index = function (req, res) {
     var minWinners = 5;
 
     var dayOfWeekSpecified = false;
+    var noDayOfWeekSpecified = false;
+
+    var extraOptions = 0;
 
     for (var property in req.query) {
         if (req.query.hasOwnProperty(property)) {
@@ -24,9 +27,15 @@ exports.index = function (req, res) {
 
             if (property == "dayOfWeek" && value == "true") {
                 dayOfWeekSpecified = true;
+                extraOptions++;
             }
 
-            if (value == "true" && property != "dayOfWeek") {
+            if (property == "noDayOfWeek" && value == "true") {
+                noDayOfWeekSpecified = true;
+                extraOptions++;
+            }
+
+            if (value == "true" && property != "dayOfWeek" && property != "noDayOfWeek") {
                 options.push(property);
             }
         }
@@ -34,14 +43,19 @@ exports.index = function (req, res) {
 
     var positionBuilder = MergedPosition.find().where('Winners').gte(parseInt(minWinners));
 
-    if (options.length > 0) {
+    if (options.length - extraOptions > 0) {
         console.log("options is" + options);
         positionBuilder = positionBuilder.where('options.name').all(options);
     }
 
     if (dayOfWeekSpecified == true) {
-        console.log("Why are we here");
+        console.log("Day of Week specified.");
         positionBuilder = positionBuilder.where('dayOfWeek').ne('Not Set');
+    }
+
+    if (noDayOfWeekSpecified == true) {
+        console.log("Day of Week set not specified");
+        positionBuilder = positionBuilder.where('dayOfWeek').equals('Not Set');
     }
 
     positionBuilder = positionBuilder.sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1})

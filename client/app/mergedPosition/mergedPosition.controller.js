@@ -72,6 +72,14 @@ angular.module('happoshuApp')
                     headerTooltip: 'Time of Day',
                     cellFilter: 'date:\'HH:mm\''
                 },
+                {
+                    field: 'ukTime',
+                    width: '5%',
+                    maxWidth: 200,
+                    minWidth: 70,
+                    headerTooltip: 'UK Time of Day',
+                    cellFilter: 'date:\'HH:mm\''
+                },
 
                 {
                     field: 'TradeLength',
