@@ -18,21 +18,26 @@ exports.index = function (req, res) {
 exports.update = function (req, res) {
     console.log("hey its the back end. " + JSON.stringify(req.body))
     if (req.body._id) {
+        console.log("deleting " + req.body._id)
         delete req.body._id;
     }
-    SimulationGroup.findById(req.params.id, function (err, test) {
+    SimulationGroup.findById(req.params.id, function (err, simulationGroup) {
         if (err) {
             return handleError(res, err);
         }
-        if (!test) {
+        if (!simulationGroup) {
             return res.status(404).send('Not Found');
         }
-        var updated = _.merge(test, req.body);
+        console.log("This is the simulationGroup from the front end " + JSON.stringify(req.body));
+        console.log("Existing " + JSON.stringify(simulationGroup));
+        var updated = _.merge(simulationGroup, req.body);
+        console.log("updated" + JSON.stringify(updated));
         updated.save(function (err) {
             if (err) {
                 return handleError(res, err);
             }
-            return res.status(200).json(test);
+            console.log("This is the simulationGroup " + JSON.stringify(simulationGroup));
+            return res.status(200).json(simulationGroup);
         });
     });
 };
