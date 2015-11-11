@@ -13,4 +13,14 @@ service('SimulationGroupsService', function ($http) {
         console.log('Dirty toggle');
 
     };
+
+    this.update = function (simulationGroup) {
+        console.log('Updating simulation group' + simulationGroup);
+        return $http({
+            method: 'PUT',
+            url: 'http://localhost:9000/api/simulationGroups/' + simulationGroup._id,
+            data: simulationGroup
+        });
+    }
+
 });

@@ -14,12 +14,17 @@ angular.module('happoshuApp')
 
         $scope.columns =
             [
-                {field: 'runName'},
+                {field: 'runName', enableCellEdit: true},
                 {field: 'description', width: '40%', maxWidth: 600, minWidth: 100},
+                //{
+                //    field: 'dirty',
+                //    cellTemplate: '<button class="btn primary" ng-click="grid.appScope.showMe()">{{ COL_FIELD }}</button>'
+                //}
+                //,
                 {
-                    field: 'dirty',
-                    cellTemplate: '<button class="btn primary" ng-click="grid.appScope.showMe()">{{ COL_FIELD }}</button>'
+                    field: 'dirty'
                 }
+
 
 
             ];
@@ -40,4 +45,15 @@ angular.module('happoshuApp')
             // $scope.results2 = dataResponse;
             $scope.gridOptions2.data = dataResponse.data;
         });
+
+        $scope.saveRow = function (rowEntity) {
+            console.log('save row called' + JSON.stringify(rowEntity));
+            $scope.gridApi.rowEdit.setSavePromise(rowEntity, SimulationGroupsService.update(rowEntity));
+        };
+
+        $scope.gridOptions2.onRegisterApi = function (gridApi) {
+            //set gridApi on scope
+            $scope.gridApi = gridApi;
+            gridApi.rowEdit.on.saveRow($scope, $scope.saveRow);
+        };
     });
