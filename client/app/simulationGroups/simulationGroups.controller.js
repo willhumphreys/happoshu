@@ -6,8 +6,8 @@ angular.module('happoshuApp')
       $scope.columns =
           [
             {field: 'runName'},
-              {field: 'mergedPositions'},
-            {field: 'description', width: '5%', maxWidth: 200, minWidth: 100},
+              {field: 'description', width: '40%', maxWidth: 600, minWidth: 100},
+              {field: 'dirty'}
 
 
           ];
