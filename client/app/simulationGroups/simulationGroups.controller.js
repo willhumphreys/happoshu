@@ -3,11 +3,23 @@
 angular.module('happoshuApp')
     .controller('SimulationGroupsCtrl', function ($scope, SimulationGroupsService) {
 
+
+        $scope.someProp = 'abc',
+            $scope.showMe = function () {
+                alert($scope.someProp);
+                SimulationGroupsService.toggleDirty();
+            };
+
+
         $scope.columns =
             [
                 {field: 'runName'},
                 {field: 'description', width: '40%', maxWidth: 600, minWidth: 100},
-                {field: 'dirty'}
+                {
+                    field: 'dirty',
+                    cellTemplate: '<button class="btn primary" ng-click="grid.appScope.showMe()">{{ COL_FIELD }}</button>'
+                }
+
 
 
             ];
