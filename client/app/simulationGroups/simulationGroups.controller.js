@@ -16,17 +16,13 @@ angular.module('happoshuApp')
             [
                 {field: 'runName', enableCellEdit: true},
                 {field: 'description', width: '40%', maxWidth: 600, minWidth: 100},
-                //{
-                //    field: 'dirty',
-                //    cellTemplate: '<button class="btn primary" ng-click="grid.appScope.showMe()">{{ COL_FIELD }}</button>'
-                //}
-                //,
                 {
-                    field: 'dirty'
+                    name: 'dirty', displayName: 'Dirty', editableCellTemplate: 'ui-grid/dropdownEditor', width: '20%',
+                    editDropdownValueLabel: 'dirty', editDropdownOptionsArray: [
+                    {id: true, dirty: 'true'},
+                    {id: false, dirty: 'false'}
+                ]
                 }
-
-
-
             ];
 
         $scope.gridOptions2 = {
