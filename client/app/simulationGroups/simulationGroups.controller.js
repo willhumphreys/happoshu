@@ -29,6 +29,7 @@ angular.module('happoshuApp')
             enableColumnResizing: true,
             enableSorting: true,
             enableFiltering: true,
+            // enableCellEditOnFocus: true,
             columnDefs: $scope.columns
 
         };
