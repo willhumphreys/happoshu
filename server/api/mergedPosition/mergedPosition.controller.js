@@ -3,6 +3,99 @@
 var _ = require('lodash');
 var MergedPosition = require('./mergedPosition.model');
 
+var async = require("async");
+
+
+exports.league = function (req, res) {
+
+    async.series([
+            function (callback) {
+                MergedPosition.find({
+                    Winners: {'$gte': 5},
+                    'options.name': {'$all': ['AUDUSD', 'AUDUSDBull']}
+                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
+
+            },
+            function (callback) {
+                MergedPosition.find({
+                    Winners: {'$gte': 5},
+                    'options.name': {'$all': ['AUDUSD', 'AUDUSDBear']}
+                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
+            },
+
+            function (callback) {
+                MergedPosition.find({
+                    Winners: {'$gte': 5},
+                    'options.name': {'$all': ['GBPUSD', 'GBPUSDBull']}
+                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
+
+            },
+            function (callback) {
+                MergedPosition.find({
+                    Winners: {'$gte': 5},
+                    'options.name': {'$all': ['GBPUSD', 'GBPUSDBear']}
+                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
+            },
+            function (callback) {
+                MergedPosition.find({
+                    Winners: {'$gte': 5},
+                    'options.name': {'$all': ['EURUSD', 'EURUSDBull']}
+                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
+
+            },
+            function (callback) {
+                MergedPosition.find({
+                    Winners: {'$gte': 5},
+                    'options.name': {'$all': ['EURUSD', 'EURUSDBear']}
+                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
+            },
+
+
+            function (callback) {
+                MergedPosition.find({
+                    Winners: {'$gte': 5},
+                    'options.name': {'$all': ['SPX', 'SPXBull']}
+                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
+            },
+
+            function (callback) {
+                MergedPosition.find({
+                    Winners: {'$gte': 5},
+                    'options.name': {'$all': ['SPX', 'SPXBear']}
+                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
+
+            },
+            function (callback) {
+                MergedPosition.find({
+                    Winners: {'$gte': 5},
+                    'options.name': {'$all': ['GOLD', 'GOLDBull']}
+                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
+            },
+            function (callback) {
+                MergedPosition.find({
+                    Winners: {'$gte': 5},
+                    'options.name': {'$all': ['GOLD', 'GOLDBear']}
+                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
+            }
+
+
+        ],
+        function (err, results) {
+
+
+            var flatResults = [];
+
+
+            function appendQuery(element) {
+                flatResults = flatResults.concat(element);
+            }
+
+            results.forEach(appendQuery);
+
+            return res.json(200, flatResults);
+        });
+};
+
 // Get list of mergedPositions
 exports.index = function (req, res) {
 
