@@ -45,7 +45,8 @@ exports.index = function (req, res) {
 
     if (options.length - extraOptions > 0) {
         console.log("options is" + options);
-        positionBuilder = positionBuilder.where('options.name').all(options);
+        //positionBuilder = positionBuilder.where('options.name').all(options);
+        positionBuilder = positionBuilder.where('options.name').in(options);
     }
 
     if (dayOfWeekSpecified == true) {
