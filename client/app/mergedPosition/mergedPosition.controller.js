@@ -215,4 +215,20 @@ angular.module('happoshuApp')
                 $scope.searchStatus = 'Search Complete';
             })
         };
+
+        $scope.showLeague = function (searchOptions) {
+
+            console.log(searchOptions);
+
+            $scope.searchStatus = 'Searching';
+
+            MergedPositionService.showLeague().then(function (dataResponse) {
+
+                console.log("Showing League");
+
+
+                $scope.gridOptions2.data = dataResponse.data;
+                $scope.searchStatus = 'Search Complete';
+            })
+        };
     });

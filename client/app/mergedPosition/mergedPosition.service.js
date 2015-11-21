@@ -14,6 +14,17 @@ angular.module('happoshuApp')
             });
         };
 
+        this.showLeague = function (searchOptions) {
+            console.log('Getting mergedPositions' + searchOptions);
+
+            var mergedPositionUrl = 'http://localhost:9000/api/mergedPositions/league';
+
+            return $http({
+                method: 'GET',
+                url: mergedPositionUrl
+            });
+        };
+
         this.mapScopeOptionsToSearch = function (searchOptions) {
             var optionsToSend = {};
             angular.copy(searchOptions, optionsToSend);

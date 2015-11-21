@@ -55,7 +55,7 @@ exports.league = function (req, res) {
     async.map(items,
         function (item, callback) {
             MergedPosition.find({
-                Winners: {'$gte': 5},
+                Winners: {'$gte': 10},
                 'options.name': {'$all': [item.contract, item.bullBear]}
             }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
         },
@@ -131,7 +131,7 @@ exports.index = function (req, res) {
         positionBuilder = positionBuilder.where('dayOfWeek').equals('Not Set');
     }
 
-    positionBuilder = positionBuilder.sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1})
+    positionBuilder = positionBuilder.sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(100);
 
     positionBuilder.
     exec(function (err, mergedPositions) {
