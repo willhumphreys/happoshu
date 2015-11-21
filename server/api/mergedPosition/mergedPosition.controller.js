@@ -8,81 +8,58 @@ var async = require("async");
 
 exports.league = function (req, res) {
 
-    async.series([
-            function (callback) {
-                MergedPosition.find({
-                    Winners: {'$gte': 5},
-                    'options.name': {'$all': ['AUDUSD', 'AUDUSDBull']}
-                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
+    var items = [
+        {
+            "contract": "AUDUSD",
+            "bullBear": "AUDUSDBull"
+        }, {
 
-            },
-            function (callback) {
-                MergedPosition.find({
-                    Winners: {'$gte': 5},
-                    'options.name': {'$all': ['AUDUSD', 'AUDUSDBear']}
-                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
-            },
+            "contract": "AUDUSD",
+            "bullBear": "AUDUSDBear"
+        },
+        {
+            "contract": "EURUSD",
+            "bullBear": "EURUSDBull"
+        }, {
 
-            function (callback) {
-                MergedPosition.find({
-                    Winners: {'$gte': 5},
-                    'options.name': {'$all': ['GBPUSD', 'GBPUSDBull']}
-                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
+            "contract": "EURUSD",
+            "bullBear": "EURUSDBear"
+        },
+        {
+            "contract": "GBPUSD",
+            "bullBear": "GBPUSDBull"
+        }, {
 
-            },
-            function (callback) {
-                MergedPosition.find({
-                    Winners: {'$gte': 5},
-                    'options.name': {'$all': ['GBPUSD', 'GBPUSDBear']}
-                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
-            },
-            function (callback) {
-                MergedPosition.find({
-                    Winners: {'$gte': 5},
-                    'options.name': {'$all': ['EURUSD', 'EURUSDBull']}
-                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
+            "contract": "GBPUSD",
+            "bullBear": "GBPUSDBear"
+        },
+        {
+            "contract": "GOLD",
+            "bullBear": "GOLDBull"
+        }, {
 
-            },
-            function (callback) {
-                MergedPosition.find({
-                    Winners: {'$gte': 5},
-                    'options.name': {'$all': ['EURUSD', 'EURUSDBear']}
-                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
-            },
+            "contract": "GOLD",
+            "bullBear": "GOLDBear"
+        }
+        , {
+            "contract": "SPX",
+            "bullBear": "SPXBull"
+        }, {
 
-
-            function (callback) {
-                MergedPosition.find({
-                    Winners: {'$gte': 5},
-                    'options.name': {'$all': ['SPX', 'SPXBull']}
-                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
-            },
-
-            function (callback) {
-                MergedPosition.find({
-                    Winners: {'$gte': 5},
-                    'options.name': {'$all': ['SPX', 'SPXBear']}
-                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
-
-            },
-            function (callback) {
-                MergedPosition.find({
-                    Winners: {'$gte': 5},
-                    'options.name': {'$all': ['GOLD', 'GOLDBull']}
-                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
-            },
-            function (callback) {
-                MergedPosition.find({
-                    Winners: {'$gte': 5},
-                    'options.name': {'$all': ['GOLD', 'GOLDBear']}
-                }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
-            }
+            "contract": "SPX",
+            "bullBear": "SPXBear"
+        }
+    ];
 
 
-        ],
+    async.map(items,
+        function (item, callback) {
+            MergedPosition.find({
+                Winners: {'$gte': 5},
+                'options.name': {'$all': [item.contract, item.bullBear]}
+            }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
+        },
         function (err, results) {
-
-
             var flatResults = [];
 
 
@@ -93,7 +70,9 @@ exports.league = function (req, res) {
             results.forEach(appendQuery);
 
             return res.json(200, flatResults);
-        });
+        }
+    );
+
 };
 
 // Get list of mergedPositions
