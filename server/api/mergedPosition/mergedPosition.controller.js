@@ -34,6 +34,22 @@ exports.league = function (req, res) {
             "bullBear": "GBPUSDBear"
         },
         {
+            "contract": "NZDUSD",
+            "bullBear": "NZDUSDBull"
+        }, {
+
+            "contract": "NZDUSD",
+            "bullBear": "NZDUSDBear"
+        },
+        {
+            "contract": "EURGBP",
+            "bullBear": "EURGBPBull"
+        }, {
+
+            "contract": "EURGBP",
+            "bullBear": "EURGBPBear"
+        },
+        {
             "contract": "GOLD",
             "bullBear": "GOLDBull"
         }, {
