@@ -222,7 +222,9 @@ angular.module('happoshuApp')
 
             $scope.searchStatus = 'Searching';
 
-            MergedPositionService.showLeague().then(function (dataResponse) {
+            var mappedSearchOptions = MergedPositionService.mapScopeOptionsToSearch(searchOptions);
+
+            MergedPositionService.showLeague(mappedSearchOptions).then(function (dataResponse) {
 
                 console.log("Showing League");
 

@@ -21,7 +21,8 @@ angular.module('happoshuApp')
 
             return $http({
                 method: 'GET',
-                url: mergedPositionUrl
+                url: mergedPositionUrl,
+                params: searchOptions
             });
         };
 

@@ -67,11 +67,24 @@ exports.league = function (req, res) {
         }
     ];
 
+    var minWinners = 10;
+
+    for (var property in req.query) {
+        if (req.query.hasOwnProperty(property)) {
+            var value = req.query[property];
+            console.log(property + " " + value);
+
+            if (property == "minWinners") {
+                minWinners = value;
+                console.log("Setting min winners to " + value);
+            }
+        }
+    }
 
     async.map(items,
         function (item, callback) {
             MergedPosition.find({
-                Winners: {'$gte': 10},
+                Winners: {'$gte': minWinners},
                 'options.name': {'$all': [item.contract, item.bullBear]}
             }, callback).sort({WinnerLoserRationSimulations: -1, TickProfitPerTrade: -1}).limit(2);
         },
