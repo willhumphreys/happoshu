@@ -81,6 +81,12 @@ exports.league = function (req, res) {
         }
     }
 
+    minWinners = parseInt(minWinners);
+
+    if (isNaN(minWinners)) {
+        minWinners = 10;
+    }
+
     async.map(items,
         function (item, callback) {
             MergedPosition.find({
