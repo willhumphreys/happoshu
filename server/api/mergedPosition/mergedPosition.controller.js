@@ -66,14 +66,24 @@ exports.league = function (req, res) {
 
             "contract": "GOLD",
             "bullBear": "GOLDBear"
-        }
-        , {
+        }, {
             "contract": "SPX",
             "bullBear": "SPXBull"
         }, {
-
             "contract": "SPX",
             "bullBear": "SPXBear"
+        }, {
+            "contract": "USDJPY",
+            "bullBear": "USDJPYBull"
+        }, {
+            "contract": "USDJPY",
+            "bullBear": "USDJPYBear"
+        }, {
+            "contract": "EURJPY",
+            "bullBear": "EURJPYBull"
+        }, {
+            "contract": "EURJPY",
+            "bullBear": "EURJPYBear"
         }
     ];
 
